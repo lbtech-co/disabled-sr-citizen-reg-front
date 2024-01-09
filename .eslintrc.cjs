@@ -1,0 +1,33 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    "prettier",
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    "padding-line-between-statements": [
+      "error",
+      { blankLine: "always", prev: "*", next: "function" },
+      { blankLine: "always", prev: "function", next: "*" },
+      { blankLine: "always", prev: "*", next: "block-like" },
+      { blankLine: "always", prev: "*", next: "export" },
+    ],
+    "react/jsx-fragments": ["error", "element"],
+    "react/jsx-no-undef": ["error"],
+    "linebreak-style": ["error", "unix"],
+    quotes: ["error", "double", { allowTemplateLiterals: true }],
+    semi: ["error", "always"],
+    "arrow-body-style": ["error", "as-needed"],
+    "react/self-closing-comp": ["error", { component: true, html: true }],
+    "eol-last": 2,
+    "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0 }],
+  },
+}
