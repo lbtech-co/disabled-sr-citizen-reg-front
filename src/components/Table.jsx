@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import PropTypes from "prop-types";
 import { colors } from "../utils/Constants";
 import Icon from "./Icon";
-import { Button } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 
 export default function CustomTable({ headers, rows, onUpdate, onDelete }) {
   const headersList = headers.map((item) => item.id);
@@ -68,12 +68,12 @@ export default function CustomTable({ headers, rows, onUpdate, onDelete }) {
               {hasActionButton && (
                 <TableCell align="right">
                   <div>
-                    <Button onClick={onUpdate}>
+                    <IconButton onClick={onUpdate}>
                       <Icon name="Write" />
-                    </Button>
-                    <Button onClick={onDelete}>
+                    </IconButton>
+                    <IconButton onClick={onDelete}>
                       <Icon name="Delete" />
-                    </Button>
+                    </IconButton>
                   </div>
                 </TableCell>
               )}
