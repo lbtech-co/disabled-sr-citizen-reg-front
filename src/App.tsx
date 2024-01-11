@@ -1,8 +1,9 @@
 import { TextField } from "@mui/material";
 import "./App.css";
 import preeti from "preeti";
+import { ChangeEvent } from "react";
 
-function onInputChange(event) {
+function onInputChange(event: ChangeEvent<HTMLInputElement>) {
   const changedText = preeti(event.target.value);
   console.log(changedText);
 }
