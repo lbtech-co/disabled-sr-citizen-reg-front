@@ -15,7 +15,7 @@ export default function StatesTable() {
   ];
 
   return (
-    <Stack sx={{ width: "60%" }}>
+    <Stack sx={{ width: "60%", height: "max-content" }}>
       <Table headers={headers} rows={rows} onUpdate={() => {}} />
     </Stack>
   );

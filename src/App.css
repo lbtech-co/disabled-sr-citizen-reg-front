@@ -1,11 +1,11 @@
 #states-crud-container {
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+  margin-block: auto;
   display: flex;
   gap: 50px;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
 @media screen and (max-width: 800px) {

@@ -4,9 +4,11 @@ import StatesTable from "../components/StateTable";
 
 export default function StatesCrud() {
   return (
-    <Container id="states-crud-container">
-      <StatesTable />
-      <StateForm />
-    </Container>
+    <div style={{ minHeight: "100vh", display: "flex" }}>
+      <Container id="states-crud-container">
+        <StatesTable />
+        <StateForm />
+      </Container>
+    </div>
   );
 }
