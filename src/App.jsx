@@ -1,9 +1,13 @@
 import "./App.css";
-
-import StatesCrud from "./pages/StatesCrud";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  return <StatesCrud />;
+  return (
+    <div>
+      app js
+      <Outlet />
+    </div>
+  );
 }
 
 export default App;
