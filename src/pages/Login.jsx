@@ -1,9 +1,17 @@
-import { Grid, Paper, Button, Typography, Divider } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  Button,
+  Typography,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Divider,
+} from "@mui/material";
 import { colors } from "../utils/Constants";
 import FormInput from "../components/FormInput";
-import Link from "@mui/material/Link";
 
-export default function Register() {
+export default function Login() {
   const paperStyle = {
     padding: 20,
     minHeight: "600",
@@ -19,7 +27,7 @@ export default function Register() {
 
   const formStyle = {
     width: "100%",
-    marginTop: 8,
+    marginBlock: 10,
     display: "flex",
     flexDirection: "column",
     gap: 15,
@@ -41,20 +49,33 @@ export default function Register() {
       style={{ minHeight: "100vh", backgroundColor: colors.white }}
     >
       <Paper elevation={10} style={paperStyle}>
-        <div style={{ width: "100%", padding: 10 }}>
+        <div style={{ padding: 10, width: "100%" }}>
           <Typography variant="h4" fontWeight="Bold" color={colors.black}>
-            Create an account
+            Welcome Back
           </Typography>
           <Typography variant="body1" fontSize={13} color={colors.lightBlack}>
-            Enter your details to register
+            Enter your details to sign in
           </Typography>
         </div>
         <form style={formStyle} noValidate>
-          <FormInput label="Full Name" id="name" name="name" />
-          <FormInput label="Email" id="email" name="email" />
-          <FormInput label="Mobile" id="mobile" name="mobile" />
+          <FormInput label="Email or Mobile" id="username" name="username" />
           <FormInput label="Password" id="password" name="password" />
-          <FormInput label="Confirm Password" id="confirm" name="confirm" />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            {" "}
+            <FormControlLabel
+              control={<Checkbox name="remember" color="warning" />}
+              label="Remember me"
+            />
+            <Typography>
+              <Link color={colors.red}>Forgot Password ?</Link>
+            </Typography>
+          </div>
           <Button
             type="submit"
             variant="contained"
@@ -62,20 +83,19 @@ export default function Register() {
             fullWidth
             style={submitButtonStyle}
           >
-            Sign Up
+            Log In
           </Button>
           <Divider />
         </form>
-
         <Typography>
-          Already have an account
+          Don&apos;t have an account
           <Link
-            href="/login"
             color={colors.red}
             style={{ fontWeight: 500, paddingInline: 1 }}
+            href="/register"
           >
             {" "}
-            Login
+            Register
           </Link>
         </Typography>
       </Paper>
