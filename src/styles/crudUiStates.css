@@ -1,4 +1,4 @@
-@import './variables.css';
+@import url('../index.css');
 
 .state-crud-card {
   display: flex;

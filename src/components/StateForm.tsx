@@ -1,6 +1,6 @@
-import { Button, Card, InputLabel, TextField, Typography } from '@mui/material'
-import { colors } from '../utils/Constants'
-import NepaliInput from './NepaliInput'
+import { Button, Card, InputLabel, TextField, Typography } from "@mui/material";
+import { colors } from "../utils/Constants";
+import NepaliInput from "./NepaliInput";
 
 export default function StateForm() {
   return (
@@ -15,15 +15,20 @@ export default function StateForm() {
         <InputLabel htmlFor="nepali-name">
           English name (अंग्रेजी नाम)
         </InputLabel>
-        <NepaliInput fullWidth id="nepali-name" />
+        <NepaliInput
+          fullWidth
+          id="nepali-name"
+          name="nepali-name"
+          label="Nepali Name"
+        />
         <Button
           type="submit"
           sx={{
             backgroundColor: colors.blue,
-            width: 'max-content',
-            height: '45px',
+            width: "max-content",
+            height: "45px",
             paddingInline: 10,
-            margin: 'auto',
+            margin: "auto",
           }}
           variant="contained"
         >
@@ -31,5 +36,5 @@ export default function StateForm() {
         </Button>
       </form>
     </Card>
-  )
+  );
 }
