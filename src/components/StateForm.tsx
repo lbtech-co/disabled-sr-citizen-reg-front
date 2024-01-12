@@ -1,5 +1,4 @@
 import { Button, Card, Typography } from "@mui/material";
-import { colors } from "../utils/Constants";
 import CustomInput from "./CustomInput";
 
 export default function StateForm() {
@@ -24,8 +23,8 @@ export default function StateForm() {
         />
         <Button
           type="submit"
+          color="primary"
           sx={{
-            backgroundColor: colors.blue,
             width: "max-content",
             height: "45px",
             paddingInline: 10,
