@@ -9,6 +9,7 @@ export interface TextInputProps
     FilledTextFieldProps | OutlinedTextFieldProps | StandardTextFieldProps,
     "variant"
   > {
+  isNepali?: boolean
   name: string
   id?: string
   label: string
