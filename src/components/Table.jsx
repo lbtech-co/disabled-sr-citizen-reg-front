@@ -1,20 +1,20 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import PropTypes from "prop-types";
-import { colors } from "../utils/Constants";
-import Icon from "./Icon";
-import { Button } from "@mui/material";
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
+import PropTypes from 'prop-types'
+import { colors } from '../utils/Constants'
+import Icon from './Icon'
+import { Button } from '@mui/material'
 
 export default function CustomTable({ headers, rows, onUpdate, onDelete }) {
-  const headersList = headers.map((item) => item.id);
-  const defaultAlign = "right";
+  const headersList = headers.map((item) => item.id)
+  const defaultAlign = 'right'
   const hasActionButton =
-    typeof onUpdate !== "undefined" || typeof onDelete !== "undefined";
+    typeof onUpdate !== 'undefined' || typeof onDelete !== 'undefined'
 
   return (
     <TableContainer component={Paper} sx={{ flexGrow: 1 }}>
@@ -53,12 +53,12 @@ export default function CustomTable({ headers, rows, onUpdate, onDelete }) {
           {rows.map((row, index) => (
             <TableRow
               key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="left">{index + 1}</TableCell>
               {headersList.map((item, index) => (
                 <TableCell
-                  sx={{ width: "max-content" }}
+                  sx={{ width: 'max-content' }}
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
@@ -82,7 +82,7 @@ export default function CustomTable({ headers, rows, onUpdate, onDelete }) {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }
 
 CustomTable.propTypes = {
@@ -91,4 +91,4 @@ CustomTable.propTypes = {
   handleChangePage: PropTypes.func,
   onUpdate: PropTypes.func,
   onDelete: PropTypes.func,
-};
+}

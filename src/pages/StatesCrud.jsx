@@ -1,6 +1,6 @@
-import Container from "@mui/material/Container";
-import StateForm from "../components/StateForm";
-import StatesTable from "../components/StateTable";
+import Container from '@mui/material/Container'
+import StateForm from '../components/StateForm'
+import StatesTable from '../components/StateTable'
 
 export default function StatesCrud() {
   return (
@@ -8,5 +8,5 @@ export default function StatesCrud() {
       <StatesTable />
       <StateForm />
     </Container>
-  );
+  )
 }

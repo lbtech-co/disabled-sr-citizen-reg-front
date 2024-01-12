@@ -4,12 +4,12 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  parser: '@typescript-eslint/parser',
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
@@ -20,6 +20,7 @@ module.exports = {
       { blankLine: 'always', prev: '*', next: 'block-like' },
       { blankLine: 'always', prev: '*', next: 'export' },
     ],
+    'react/react-in-jsx-scope': 'off',
     'react/jsx-fragments': ['error', 'element'],
     'react/jsx-no-undef': ['error'],
     'linebreak-style': ['error', 'unix'],
