@@ -1,14 +1,14 @@
-import { TextField } from "@mui/material";
-import preeti from "preeti";
-import PropTypes from "prop-types";
-import { useState } from "react";
+import { TextField } from '@mui/material'
+import preeti from 'preeti'
+import PropTypes from 'prop-types'
+import { useState } from 'react'
 
 export default function NepaliInput({ label, id, ...restProps }) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('')
 
   function handleChange(e) {
-    const nepaliValue = preeti(e.target.value);
-    setValue(nepaliValue);
+    const nepaliValue = preeti(e.target.value)
+    setValue(nepaliValue)
   }
 
   return (
@@ -19,10 +19,10 @@ export default function NepaliInput({ label, id, ...restProps }) {
       value={value}
       onChange={handleChange}
     />
-  );
+  )
 }
 
 NepaliInput.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
-};
+}
