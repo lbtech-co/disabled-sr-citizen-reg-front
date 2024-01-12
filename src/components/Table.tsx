@@ -8,7 +8,6 @@ import Paper from "@mui/material/Paper";
 import { colors } from "../utils/Constants";
 import Icon from "./Icon";
 import IconButton from "@mui/material/IconButton";
-
 interface TableProps {
   headers: {
     label: string

@@ -14,6 +14,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.3",
     "@typescript-eslint/parser": "^6.18.1",
     "preeti": "^1.0.3",
