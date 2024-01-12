@@ -1,5 +1,4 @@
 import "./App.css";
-
 import StatesCrud from "./pages/StatesCrud";
 
 function App() {

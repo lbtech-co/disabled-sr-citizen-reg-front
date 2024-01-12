@@ -1,6 +1,7 @@
 import Container from "@mui/material/Container";
 import StateForm from "../components/StateForm";
 import StatesTable from "../components/StateTable";
+import "../styles/crudUiStates.css";
 
 export default function StatesCrud() {
   return (
