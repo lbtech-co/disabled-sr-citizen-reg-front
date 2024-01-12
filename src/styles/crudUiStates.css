@@ -1,0 +1,31 @@
+@import url('../index.css');
+
+.state-crud-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.state-crud-form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  gap: 30px;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.state-crud-form-header {
+  background-color: var(--custom-red);
+  width: 100%;
+  height: 55px;
+  display: flex;
+  color: var(--custom-white);
+  justify-content: center;
+  align-items: center;
+}

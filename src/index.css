@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --custom-red: #b83955;
+  --custom-blue: #234a83;
+  --custom-lightBlack: #494953;
+  --custom-white: #f2f2f2;
+  --custom-black: #252725;
+}
