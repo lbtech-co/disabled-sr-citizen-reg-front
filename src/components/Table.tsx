@@ -8,26 +8,15 @@ import Paper from "@mui/material/Paper";
 import { colors } from "../utils/Constants";
 import Icon from "./Icon";
 import IconButton from "@mui/material/IconButton";
-interface TableProps {
-  headers: {
-    label: string
-    id: string
-    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined
-  }[]
-  rows: {
-    //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any
-  }[]
-  onUpdate?: (id: string) => void
-  onDelete?: (id: string) => void
-}
+import { CustomTableProps } from "../interfaces/ComponentInterface";
 
 export default function CustomTable({
   headers,
   rows,
   onUpdate,
   onDelete,
-}: TableProps) {
+  ...restProps
+}: CustomTableProps) {
   const headersList = headers.map((item) => item.id);
   const defaultAlign = "right";
   const hasActionButton =
@@ -35,7 +24,7 @@ export default function CustomTable({
 
   return (
     <TableContainer component={Paper} sx={{ flexGrow: 1 }}>
-      <Table aria-label="simple table">
+      <Table aria-label="simple table" {...restProps}>
         <TableHead>
           <TableRow>
             <TableCell
@@ -88,7 +77,7 @@ export default function CustomTable({
               {hasActionButton && (
                 <TableCell align="right">
                   <div>
-                    <IconButton onClick={() => onUpdate?.(row.id)}>
+                    <IconButton onClick={() => onUpdate?.(row)}>
                       <Icon name="Write" />
                     </IconButton>
                     <IconButton onClick={() => onDelete?.(row.id)}>

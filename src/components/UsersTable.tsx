@@ -1,6 +1,7 @@
 import Table from "../components/Table";
 import Stack from "@mui/material/Stack";
 import { TableHeaderProps } from "../interfaces/ComponentInterface";
+import { TablePagination } from "@mui/material";
 
 export default function UsersTable() {
   const headers: TableHeaderProps[] = [
@@ -78,8 +79,24 @@ export default function UsersTable() {
   ];
 
   return (
-    <Stack sx={{ minHeight: "400px", height: "60vh", overflowX: "auto" }}>
-      <Table headers={headers} rows={rows} onUpdate={() => {}} />
+    <Stack minHeight="400px" height="60vh">
+      <Table
+        headers={headers}
+        rows={rows}
+        onUpdate={(data) => {
+          console.log(data);
+        }}
+        size="small"
+        stickyHeader
+        aria-label="a dense table"
+      />
+      <TablePagination
+        page={1}
+        count={10}
+        onPageChange={() => {}}
+        rowsPerPage={-1}
+        rowsPerPageOptions={[]}
+      />
     </Stack>
   );
 }

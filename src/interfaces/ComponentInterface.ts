@@ -1,4 +1,4 @@
-import { SelectProps } from "@mui/material";
+import { SelectProps, TableProps } from "@mui/material";
 import {
   FilledTextFieldProps,
   OutlinedTextFieldProps,
@@ -30,4 +30,19 @@ export interface SelectOptionInterface {
 
 export interface CustomSelectProps extends SelectProps {
   options: SelectOptionInterface[]
+}
+
+export interface CustomTableProps extends TableProps {
+  headers: {
+    label: string
+    id: string
+    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined
+  }[]
+  rows: {
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any
+  }[]
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onUpdate?: (data: any) => void
+  onDelete?: (id: string) => void
 }
