@@ -37,13 +37,14 @@ export default function CustomInput({
       {isNepali ? (
         <TextField
           id={id}
+          size="small"
           error={!!error}
           value={value || inputValue}
           onChange={handleChange}
           {...restProps}
         />
       ) : (
-        <TextField id={id} error={!!error} {...restProps} />
+        <TextField size="small" id={id} error={!!error} {...restProps} />
       )}
     </div>
   );

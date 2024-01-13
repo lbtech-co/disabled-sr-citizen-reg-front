@@ -5,6 +5,7 @@ import "./index.css";
 import MUIThemeProvider from "./utils/ThemeProvider.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login.tsx";
+import UsersCrud from "./pages/UsersCrud.tsx";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login />,
+  },
+  {
+    path: "users",
+    element: <UsersCrud />,
   },
 ]);
 

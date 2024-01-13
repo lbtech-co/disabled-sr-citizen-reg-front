@@ -1,3 +1,4 @@
+import { SelectProps } from "@mui/material";
 import {
   FilledTextFieldProps,
   OutlinedTextFieldProps,
@@ -20,4 +21,13 @@ export interface TableHeaderProps {
   label: string
   id: string
   align?: "center" | "left" | "right" | "inherit" | "justify" | undefined
+}
+
+export interface SelectOptionInterface {
+  label: string
+  value: string | number
+}
+
+export interface CustomSelectProps extends SelectProps {
+  options: SelectOptionInterface[]
 }
