@@ -6,7 +6,6 @@ import {
   FormControlLabel,
   Checkbox,
   Link,
-  Divider,
 } from "@mui/material";
 import { colors } from "../utils/Constants";
 import CustomInput from "../components/CustomInput";
@@ -59,8 +58,19 @@ export default function Login() {
           </Typography>
         </div>
         <form style={formStyle} noValidate>
-          <CustomInput label="Email or Mobile" id="username" name="username" />
-          <CustomInput label="Password" id="password" name="password" />
+          <CustomInput
+            fullWidth
+            label="Email or Mobile"
+            id="username"
+            name="username"
+          />
+          <CustomInput
+            fullWidth
+            label="Password"
+            type="password"
+            id="password"
+            name="password"
+          />
           <div
             style={{
               display: "flex",
@@ -86,19 +96,7 @@ export default function Login() {
           >
             Log In
           </Button>
-          <Divider />
         </form>
-        <Typography>
-          Don&apos;t have an account
-          <Link
-            color={colors.red}
-            style={{ fontWeight: 500, paddingInline: 1 }}
-            href="/register"
-          >
-            {" "}
-            Register
-          </Link>
-        </Typography>
       </Paper>
     </Grid>
   );
