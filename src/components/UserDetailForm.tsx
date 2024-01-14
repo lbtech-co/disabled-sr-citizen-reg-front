@@ -3,8 +3,12 @@ import CustomInput from "./CustomInput";
 import CustomSelect from "./CustomSelect";
 import { colors } from "../utils/Constants";
 import { CSSProperties } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function UserDetailForm() {
+  const location = useLocation();
+  const { name, email, role, mobile } = location.state;
+
   return (
     <Container sx={ContainerStyles}>
       <Card sx={CardStyles}>
@@ -23,6 +27,7 @@ export default function UserDetailForm() {
               <CustomInput
                 fullWidth
                 required
+                defaultValue={name}
                 label="Full Name (पुरा नाम)"
                 name="name"
                 id="name"
@@ -32,6 +37,7 @@ export default function UserDetailForm() {
               <CustomInput
                 fullWidth
                 required
+                defaultValue={email}
                 label="Email (इमेल)"
                 name="email"
                 id="email"
@@ -44,6 +50,7 @@ export default function UserDetailForm() {
                 label="Role (भूमिका)"
                 name="role"
                 id="name"
+                defaultValue={role}
                 type="select"
                 options={[{ label: "Admin", value: "admin" }]}
               />
@@ -55,6 +62,7 @@ export default function UserDetailForm() {
                 type="mobile"
                 label="Mobile (मोबाइल नम्बर)"
                 name="mobile"
+                defaultValue={mobile}
                 id="mobile"
               />
             </Grid>

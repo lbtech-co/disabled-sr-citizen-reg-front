@@ -19,8 +19,7 @@ export default function CustomTable({
 }: CustomTableProps) {
   const headersList = headers.map((item) => item.id);
   const defaultAlign = "right";
-  const hasActionButton =
-    typeof onUpdate !== "undefined" || typeof onDelete !== "undefined";
+  const hasActionButton = onUpdate || onDelete;
 
   return (
     <TableContainer component={Paper} sx={{ flexGrow: 1 }}>
@@ -68,10 +67,7 @@ export default function CustomTable({
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
-                  {
-                    //eslint-diable-next-line no-explicit-any
-                    row[item]
-                  }
+                  {row[item]}
                 </TableCell>
               ))}
               {hasActionButton && (

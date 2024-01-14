@@ -2,8 +2,11 @@ import Table from "../components/Table";
 import Stack from "@mui/material/Stack";
 import { TableHeaderProps } from "../interfaces/ComponentInterface";
 import { TablePagination } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function UsersTable() {
+  const navigate = useNavigate();
+
   const headers: TableHeaderProps[] = [
     { label: "User ID (प्रयोगकर्ता ID)", id: "id", align: "center" },
     { label: "Name (नाम)", id: "name", align: "center" },
@@ -78,14 +81,17 @@ export default function UsersTable() {
     },
   ];
 
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function onUpdate(data: any) {
+    navigate("/users/create", { state: data });
+  }
+
   return (
     <Stack>
       <Table
         headers={headers}
         rows={rows}
-        onUpdate={(data) => {
-          console.log(data);
-        }}
+        onUpdate={onUpdate}
         size="small"
         stickyHeader
         aria-label="a dense table"

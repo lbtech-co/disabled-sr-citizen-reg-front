@@ -23,7 +23,7 @@ export default function CustomSelect({
       <InputLabel variant="standard" sx={LabelStyle} size="normal">
         {label}
       </InputLabel>
-      <Select fullWidth {...restProps} size="small">
+      <Select fullWidth {...restProps}>
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
