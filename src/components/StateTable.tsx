@@ -1,6 +1,7 @@
 import Table from "../components/Table";
 import Stack from "@mui/material/Stack";
 import { TableHeaderProps } from "../interfaces/ComponentInterface";
+import { CSSProperties } from "react";
 
 export default function StatesTable() {
   const headers: TableHeaderProps[] = [
@@ -18,8 +19,10 @@ export default function StatesTable() {
   ];
 
   return (
-    <Stack sx={{ width: "60%", height: "max-content" }}>
+    <Stack sx={WrapperStyle}>
       <Table headers={headers} rows={rows} onUpdate={() => {}} />
     </Stack>
   );
 }
+
+const WrapperStyle: CSSProperties = { width: "60%", height: "max-content" };

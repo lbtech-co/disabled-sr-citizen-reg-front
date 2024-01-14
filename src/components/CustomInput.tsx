@@ -5,7 +5,6 @@ import { TextInputProps } from "../interfaces/ComponentInterface";
 import { colors } from "../utils/Constants";
 
 export default function CustomInput({
-  id,
   error,
   isNepali = false,
   value,
@@ -36,14 +35,13 @@ export default function CustomInput({
       </InputLabel>
       {isNepali ? (
         <TextField
-          id={id}
           error={!!error}
           value={value || inputValue}
           onChange={handleChange}
           {...restProps}
         />
       ) : (
-        <TextField id={id} error={!!error} {...restProps} />
+        <TextField error={!!error} {...restProps} />
       )}
     </div>
   );

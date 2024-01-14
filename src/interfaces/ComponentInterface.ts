@@ -11,7 +11,6 @@ export interface TextInputProps
   > {
   isNepali?: boolean
   name: string
-  id?: string
   label: string
   className?: string
 }

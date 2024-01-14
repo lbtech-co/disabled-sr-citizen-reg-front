@@ -1,13 +1,24 @@
 import { Button, Card, Typography } from "@mui/material";
 import CustomInput from "./CustomInput";
+import { CSSProperties } from "react";
+import { colors } from "../utils/Constants";
 
 export default function StateForm() {
   return (
-    <Card className="state-crud-card">
-      <Typography variant="h5" className="state-crud-form-header">
+    <Card sx={WrapperStyle}>
+      <Typography
+        variant="h5"
+        bgcolor={colors.blue}
+        color={colors.white}
+        width="100%"
+        height="55px"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
         Create/Update States
       </Typography>
-      <form className="state-crud-form">
+      <form style={FormStyle}>
         <CustomInput
           fullWidth
           id="english-name"
@@ -24,12 +35,7 @@ export default function StateForm() {
         <Button
           type="submit"
           color="primary"
-          sx={{
-            width: "max-content",
-            height: "45px",
-            paddingInline: 10,
-            marginInline: "auto",
-          }}
+          sx={ButtonStyle}
           variant="contained"
         >
           Submit
@@ -38,3 +44,29 @@ export default function StateForm() {
     </Card>
   );
 }
+
+const WrapperStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: "40%",
+  justifyContent: "space-between",
+};
+const ButtonStyle: CSSProperties = {
+  width: "max-content",
+  height: "45px",
+  paddingInline: 10,
+  marginInline: "auto",
+};
+
+const FormStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "start",
+  justifyContent: "center",
+  width: "100%",
+  gap: "40px",
+  flex: 1,
+  padding: "20px",
+  boxSizing: "border-box",
+};

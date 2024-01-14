@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import { colors } from "../utils/Constants";
 import Icon from "./Icon";
 import IconButton from "@mui/material/IconButton";
+import { CSSProperties } from "react";
 interface TableProps {
   headers: {
     label: string
@@ -30,26 +31,19 @@ export default function CustomTable({
 }: TableProps) {
   const headersList = headers.map((item) => item.id);
   const defaultAlign = "right";
-  const hasActionButton =
-    typeof onUpdate !== "undefined" || typeof onDelete !== "undefined";
+  const hasActionButton = onUpdate || onDelete;
 
   return (
-    <TableContainer component={Paper} sx={{ flexGrow: 1 }}>
+    <TableContainer component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell
-              sx={{ color: colors.white, backgroundColor: colors.blue }}
-              align="left"
-            >
+            <TableCell sx={HeaderCellStyle} align="left">
               S.N
             </TableCell>
             {headers.map((item) => (
               <TableCell
-                sx={{
-                  color: colors.white,
-                  backgroundColor: colors.blue,
-                }}
+                sx={HeaderCellStyle}
                 align={item.align || defaultAlign}
                 key={item.id}
               >
@@ -57,10 +51,7 @@ export default function CustomTable({
               </TableCell>
             ))}
             {hasActionButton && (
-              <TableCell
-                sx={{ color: colors.white, backgroundColor: colors.blue }}
-                align="right"
-              >
+              <TableCell sx={HeaderCellStyle} align={defaultAlign}>
                 Action
               </TableCell>
             )}
@@ -75,7 +66,6 @@ export default function CustomTable({
               <TableCell align="left">{index + 1}</TableCell>
               {headersList.map((item, index) => (
                 <TableCell
-                  sx={{ width: "max-content" }}
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
@@ -104,3 +94,8 @@ export default function CustomTable({
     </TableContainer>
   );
 }
+
+const HeaderCellStyle: CSSProperties = {
+  color: colors.white,
+  backgroundColor: colors.blue,
+};
