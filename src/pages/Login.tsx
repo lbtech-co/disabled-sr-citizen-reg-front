@@ -1,11 +1,12 @@
 import {
-  Grid,
   Paper,
   Button,
   Typography,
   FormControlLabel,
   Checkbox,
   Link,
+  Container,
+  Stack,
 } from "@mui/material";
 import { colors } from "../utils/Constants";
 import CustomInput from "../components/CustomInput";
@@ -40,23 +41,25 @@ export default function Login() {
     paddingInline: 40,
     backgroundColor: colors.blue,
   };
+  const ContainerStyle: CSSProperties = {
+    minHeight: "100vh",
+    backgroundColor: colors.white,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      style={{ minHeight: "100vh", backgroundColor: colors.white }}
-    >
+    <Container style={ContainerStyle}>
       <Paper elevation={10} style={paperStyle}>
-        <div style={{ padding: 10, width: "100%" }}>
+        <Stack padding={2} width="100%">
           <Typography variant="h4" fontWeight="Bold" color={colors.black}>
             Welcome Back
           </Typography>
           <Typography variant="body1" fontSize={13} color={colors.lightBlack}>
             Enter your details to sign in
           </Typography>
-        </div>
+        </Stack>
         <form style={formStyle} noValidate>
           <CustomInput
             fullWidth
@@ -71,12 +74,10 @@ export default function Login() {
             id="password"
             name="password"
           />
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
           >
             {" "}
             <FormControlLabel
@@ -84,9 +85,9 @@ export default function Login() {
               label="Remember me"
             />
             <Typography>
-              <Link color={colors.red}>Forgot Password ?</Link>
+              <Link color={colors.red}>Forgot Password?</Link>
             </Typography>
-          </div>
+          </Stack>
           <Button
             type="submit"
             variant="contained"
@@ -98,6 +99,6 @@ export default function Login() {
           </Button>
         </form>
       </Paper>
-    </Grid>
+    </Container>
   );
 }

@@ -7,7 +7,7 @@ import { CSSProperties } from "react";
 export default function UserDetailForm() {
   return (
     <Container sx={ContainerStyles}>
-      <Card className="users-crud-card" sx={CardStyles}>
+      <Card sx={CardStyles}>
         <Typography
           bgcolor={colors.red}
           padding={1}
@@ -17,7 +17,7 @@ export default function UserDetailForm() {
         >
           Create User
         </Typography>
-        <form className="users-crud-form" style={FormStyles}>
+        <form style={FormStyles}>
           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, md: 8 }}>
             <Grid item xs={2} sm={4} md={4}>
               <CustomInput

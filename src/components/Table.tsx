@@ -76,14 +76,12 @@ export default function CustomTable({
               ))}
               {hasActionButton && (
                 <TableCell align="right">
-                  <div>
-                    <IconButton onClick={() => onUpdate?.(row)}>
-                      <Icon name="Write" />
-                    </IconButton>
-                    <IconButton onClick={() => onDelete?.(row.id)}>
-                      <Icon name="Delete" />
-                    </IconButton>
-                  </div>
+                  <IconButton onClick={() => onUpdate?.(row)}>
+                    <Icon name="Write" />
+                  </IconButton>
+                  <IconButton onClick={() => onDelete?.(row.id)}>
+                    <Icon name="Delete" />
+                  </IconButton>
                 </TableCell>
               )}
             </TableRow>

@@ -1,6 +1,8 @@
 import { SvgIconProps } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import HomeIcon from "@mui/icons-material/Home";
+
 interface IconsComponentProps extends SvgIconProps {
   name: string
 }
@@ -12,6 +14,7 @@ export default function Icon({ name, ...rest }: IconsComponentProps) {
     case "Delete":
       return <DeleteIcon {...rest} />;
     default:
+      return <HomeIcon {...rest} />;
       return null;
   }
 }

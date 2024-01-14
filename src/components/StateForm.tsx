@@ -10,6 +10,7 @@ export default function StateForm() {
       <form className="state-crud-form">
         <CustomInput
           fullWidth
+          type="password"
           id="english-name"
           name="english-name"
           label="English name (अंग्रेजी नाम)"
