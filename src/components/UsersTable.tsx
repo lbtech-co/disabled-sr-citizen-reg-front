@@ -79,7 +79,7 @@ export default function UsersTable() {
   ];
 
   return (
-    <Stack minHeight="400px" height="60vh">
+    <Stack>
       <Table
         headers={headers}
         rows={rows}
