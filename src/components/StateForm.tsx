@@ -1,20 +1,32 @@
 import { Button, Card, Typography } from "@mui/material";
 import CustomInput from "./CustomInput";
-import { CSSProperties, FormEvent, useState } from "react";
+import { CSSProperties, FormEvent, useEffect, useState } from "react";
 import { colors } from "../utils/Constants";
+import { StateData } from "../interfaces/ComponentInterface";
 
 interface FormData {
   englishName: string
   nepaliName: string
 }
 
-export default function StateForm() {
+interface StateFormProps {
+  selectedState?: StateData | undefined
+}
+
+export default function StateForm({ selectedState }: StateFormProps) {
   const [formData, setFormData] = useState<FormData>({
-    englishName: "",
     nepaliName: "",
+    englishName: "",
   });
 
+  useEffect(() => {
+    if (selectedState) {
+      setFormData(selectedState);
+    }
+  }, [selectedState]);
+
   const handleInputChange = (name: keyof FormData, value: string) => {
+    console.log("Before Update - FormData:", formData);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -44,7 +56,7 @@ export default function StateForm() {
         <CustomInput
           fullWidth
           id="english-name"
-          name="english-name"
+          name="englishName"
           label="English name (अंग्रेजी नाम)"
           value={formData.englishName}
           onChange={(e) => handleInputChange("englishName", e.target.value)}
@@ -53,7 +65,7 @@ export default function StateForm() {
           isNepali
           fullWidth
           id="nepali-name"
-          name="nepali-name"
+          name="nepaliName"
           label="Nepali name (नेपाली नाम)"
           value={formData.nepaliName}
           onChange={(e) => handleInputChange("nepaliName", e.target.value)}

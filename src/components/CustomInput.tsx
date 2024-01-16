@@ -26,7 +26,7 @@ export default function CustomInput({
       {isNepali ? (
         <TextField error={!!error} value={preeti(value)} {...restProps} />
       ) : (
-        <TextField error={!!error} {...restProps} />
+        <TextField error={!!error} value={value} {...restProps} />
       )}
     </div>
   );

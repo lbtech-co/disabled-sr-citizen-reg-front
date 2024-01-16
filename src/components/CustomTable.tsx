@@ -9,26 +9,14 @@ import { colors } from "../utils/Constants";
 import Icon from "./Icon";
 import IconButton from "@mui/material/IconButton";
 import { CSSProperties } from "react";
-interface TableProps {
-  headers: {
-    label: string
-    id: string
-    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined
-  }[]
-  rows: {
-    //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any
-  }[]
-  onUpdate?: (id: string) => void
-  onDelete?: (id: string) => void
-}
+import { CustomTableProps } from "../interfaces/ComponentInterface";
 
 export default function CustomTable({
   headers,
-  rows,
+  data,
   onUpdate,
   onDelete,
-}: TableProps) {
+}: CustomTableProps) {
   const headersList = headers.map((item) => item.id);
   const defaultAlign = "right";
   const hasActionButton = onUpdate || onDelete;
@@ -58,7 +46,7 @@ export default function CustomTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => (
+          {data.map((row, index) => (
             <TableRow
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -69,13 +57,23 @@ export default function CustomTable({
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
-                  {row[item]}
+                  {item === "name"
+                    ? `${row.englishName} (${row.nepaliName})`
+                    : row[item]}
                 </TableCell>
               ))}
               {hasActionButton && (
                 <TableCell align="right">
                   <div>
-                    <IconButton onClick={() => onUpdate?.(row.id)}>
+                    <IconButton
+                      onClick={() =>
+                        onUpdate?.({
+                          id: row.id,
+                          englishName: row.englishName,
+                          nepaliName: row.nepaliName,
+                        })
+                      }
+                    >
                       <Icon name="Write" />
                     </IconButton>
                     <IconButton onClick={() => onDelete?.(row.id)}>
