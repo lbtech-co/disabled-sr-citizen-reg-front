@@ -3,6 +3,8 @@ import StateForm from "../components/StateForm";
 import { CSSProperties, useState } from "react";
 import CustomTable from "../components/CustomTable";
 import { StateData, TableHeaderProps } from "../interfaces/ComponentInterface";
+import CustomDialog from "../components/CustomDialog";
+import React from "react";
 
 const STATE_HEADERS: TableHeaderProps[] = [
   { label: "Name (नाम)", id: "name", align: "center" },
@@ -20,21 +22,44 @@ const STATES_DATA = [
 
 export default function StatesCrud() {
   const [selectedState, setSelectedState] = useState<StateData>();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState("");
+
+  function handleDialog(id: string) {
+    setSelectedId(id);
+    setIsDialogOpen(true);
+  }
+
+  function handleDelete() {
+    setIsDialogOpen(false);
+    console.log(selectedId);
+  }
 
   return (
-    <div style={WrapperStyle}>
-      <Container id="states-crud-container">
-        <div style={WrapperStyleTable}>
-          <CustomTable
-            headers={STATE_HEADERS}
-            data={STATES_DATA}
-            onUpdate={(data) => setSelectedState(data)}
-          />
-        </div>
-        <StateForm selectedState={selectedState} />
-      </Container>
-    </div>
+    <React.Fragment>
+      <div style={WrapperStyle}>
+        <Container id="states-crud-container">
+          <div style={WrapperStyleTable}>
+            <CustomTable
+              headers={STATE_HEADERS}
+              data={STATES_DATA}
+              onUpdate={(data) => setSelectedState(data)}
+              onDelete={(id) => handleDialog(id)}
+            />
+          </div>
+          <StateForm selectedState={selectedState} />
+        </Container>
+      </div>
+      <CustomDialog
+        open={isDialogOpen}
+        handleAgree={() => handleDelete()}
+        handleClose={() => setIsDialogOpen(false)}
+      />
+    </React.Fragment>
   );
 }
 const WrapperStyle: CSSProperties = { minHeight: "100vh", display: "flex" };
-const WrapperStyleTable: CSSProperties = { width: "60%", height: "max-content" };
+const WrapperStyleTable: CSSProperties = {
+  width: "60%",
+  height: "max-content",
+};

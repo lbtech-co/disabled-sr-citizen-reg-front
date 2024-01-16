@@ -5,12 +5,12 @@ import { colors } from "../utils/Constants";
 import { StateData } from "../interfaces/ComponentInterface";
 
 interface FormData {
-  englishName: string
-  nepaliName: string
+  englishName: string;
+  nepaliName: string;
 }
 
 interface StateFormProps {
-  selectedState?: StateData | undefined
+  selectedState?: StateData | undefined;
 }
 
 export default function StateForm({ selectedState }: StateFormProps) {
