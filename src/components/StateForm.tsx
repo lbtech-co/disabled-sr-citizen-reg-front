@@ -1,9 +1,31 @@
 import { Button, Card, Typography } from "@mui/material";
 import CustomInput from "./CustomInput";
-import { CSSProperties } from "react";
+import { CSSProperties, FormEvent, useState } from "react";
 import { colors } from "../utils/Constants";
 
+interface FormData {
+  englishName: string
+  nepaliName: string
+}
+
 export default function StateForm() {
+  const [formData, setFormData] = useState<FormData>({
+    englishName: "",
+    nepaliName: "",
+  });
+
+  const handleInputChange = (name: keyof FormData, value: string) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
   return (
     <Card sx={WrapperStyle}>
       <Typography
@@ -18,12 +40,14 @@ export default function StateForm() {
       >
         Create/Update States
       </Typography>
-      <form style={FormStyle}>
+      <form style={FormStyle} onSubmit={handleSubmit}>
         <CustomInput
           fullWidth
           id="english-name"
           name="english-name"
           label="English name (अंग्रेजी नाम)"
+          value={formData.englishName}
+          onChange={(e) => handleInputChange("englishName", e.target.value)}
         />
         <CustomInput
           isNepali
@@ -31,6 +55,8 @@ export default function StateForm() {
           id="nepali-name"
           name="nepali-name"
           label="Nepali name (नेपाली नाम)"
+          value={formData.nepaliName}
+          onChange={(e) => handleInputChange("nepaliName", e.target.value)}
         />
         <Button
           type="submit"

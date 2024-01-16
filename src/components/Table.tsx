@@ -60,7 +60,7 @@ export default function CustomTable({
         <TableBody>
           {rows.map((row, index) => (
             <TableRow
-              key={row.toString()}
+              key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell align="left">{index + 1}</TableCell>

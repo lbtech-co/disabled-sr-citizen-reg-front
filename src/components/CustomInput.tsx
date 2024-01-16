@@ -1,6 +1,5 @@
 import { InputLabel, TextField } from "@mui/material";
 import preeti from "preeti";
-import { ChangeEvent, useState } from "react";
 import { TextInputProps } from "../interfaces/ComponentInterface";
 import { colors } from "../utils/Constants";
 
@@ -8,19 +7,10 @@ export default function CustomInput({
   error,
   isNepali = false,
   value,
-  onChange,
   label,
   fullWidth,
   ...restProps
 }: TextInputProps) {
-  const [inputValue, setInputValue] = useState("");
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const nepaliValue = preeti(e.target.value);
-    setInputValue(nepaliValue);
-    onChange?.(nepaliValue);
-  }
-
   return (
     <div
       style={{
@@ -34,12 +24,7 @@ export default function CustomInput({
         {label}
       </InputLabel>
       {isNepali ? (
-        <TextField
-          error={!!error}
-          value={value || inputValue}
-          onChange={handleChange}
-          {...restProps}
-        />
+        <TextField error={!!error} value={preeti(value)} {...restProps} />
       ) : (
         <TextField error={!!error} {...restProps} />
       )}
