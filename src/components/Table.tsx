@@ -69,10 +69,7 @@ export default function CustomTable({
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
-                  {
-                    //eslint-diable-next-line no-explicit-any
-                    row[item]
-                  }
+                  {row[item]}
                 </TableCell>
               ))}
               {hasActionButton && (
