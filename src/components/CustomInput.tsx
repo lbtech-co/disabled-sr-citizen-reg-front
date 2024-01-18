@@ -23,11 +23,11 @@ export default function CustomInput({
       <InputLabel variant="standard" sx={{ color: colors.black }} size="normal">
         {label}
       </InputLabel>
-      {isNepali ? (
-        <TextField error={!!error} value={preeti(value)} {...restProps} />
-      ) : (
-        <TextField error={!!error} value={value} {...restProps} />
-      )}
+      <TextField
+        error={!!error}
+        value={isNepali ? preeti(value) : value}
+        {...restProps}
+      />
     </div>
   );
 }
