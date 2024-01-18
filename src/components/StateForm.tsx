@@ -17,14 +17,16 @@ interface StateFormProps {
   fetchData: () => void;
 }
 
+const INITIAL_STATE: FormData = {
+  nepaliName: "",
+  englishName: "",
+};
+
 export default function StateForm({
   selectedState,
   fetchData,
 }: StateFormProps) {
-  const [formData, setFormData] = useState<FormData>({
-    nepaliName: "",
-    englishName: "",
-  });
+  const [formData, setFormData] = useState<FormData>(INITIAL_STATE);
 
   useEffect(() => {
     if (selectedState) {
@@ -41,17 +43,9 @@ export default function StateForm({
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const payload = formData.id
-      ? {
-          id: formData.id,
-          english_name: formData.englishName,
-          nepali_name: formData.nepaliName,
-        }
-      : {
-          english_name: formData.englishName,
-          nepali_name: formData.nepaliName,
-        };
-    console.log(payload);
+    const { englishName, nepaliName, id } = formData;
+    const basePayload = { english_name: englishName, nepali_name: nepaliName };
+    const payload = id ? { id, ...basePayload } : basePayload;
 
     try {
       const response = await axios.post(
@@ -61,16 +55,11 @@ export default function StateForm({
 
       if (response.status === 201) {
         fetchData();
-        setFormData({
-          nepaliName: "",
-          englishName: "",
-          id: "",
-        });
+        setFormData(INITIAL_STATE);
       }
     } catch (err) {
       console.log(err);
     }
-    console.log(formData);
   };
 
   return (

@@ -23,8 +23,6 @@ export default function StatesCrud() {
   }, []);
 
   const fetchData = async () => {
-    console.log("fetch");
-
     try {
       const response = await axios.get(`${BASE_URL}/State/GetAllStates`);
 
