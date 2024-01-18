@@ -1,6 +1,6 @@
 import { Button, Card, Typography } from "@mui/material";
 import CustomInput from "./CustomInput";
-import { CSSProperties, FormEvent, useEffect, useState } from "react";
+import { CSSProperties, useEffect } from "react";
 import { BASE_URL, colors } from "../constants/constants";
 import axios from "axios";
 import { STATES_INITIAL_VALUES } from "../constants/initialValues";
@@ -8,31 +8,38 @@ import {
   StateFormProps,
   StatesFormData,
 } from "../interfaces/ComponentInterface";
+import { useFormik } from "formik";
+import { STATES_SCHEMA } from "../constants/schema";
 
 export default function StateForm({
   selectedState,
   fetchData,
 }: StateFormProps) {
-  const [formData, setFormData] = useState<StatesFormData>(
-    STATES_INITIAL_VALUES,
-  );
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setTouched,
+    setValues,
+    isSubmitting,
+  } = useFormik({
+    initialValues: STATES_INITIAL_VALUES,
+    validationSchema: STATES_SCHEMA,
+    onSubmit: (formValues) => handleSubmitForm(formValues),
+  });
 
   useEffect(() => {
     if (selectedState) {
-      setFormData(selectedState);
+      setValues(selectedState);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedState]);
 
-  const handleInputChange = (name: keyof StatesFormData, value: string) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const { englishName, nepaliName, id } = formData;
+  const handleSubmitForm = async (formValues: StatesFormData) => {
+    const { englishName, nepaliName, id } = formValues;
     const basePayload = { english_name: englishName, nepali_name: nepaliName };
     const payload = id ? { id, ...basePayload } : basePayload;
 
@@ -44,7 +51,8 @@ export default function StateForm({
 
       if (response.status === 201) {
         fetchData();
-        setFormData(STATES_INITIAL_VALUES);
+        setValues(STATES_INITIAL_VALUES);
+        setTouched({});
       }
     } catch (err) {
       console.log(err);
@@ -71,8 +79,11 @@ export default function StateForm({
           id="english-name"
           name="englishName"
           label="English name (अंग्रेजी नाम)"
-          value={formData.englishName}
-          onChange={(e) => handleInputChange("englishName", e.target.value)}
+          value={values.englishName}
+          error={touched.englishName && Boolean(errors.englishName)}
+          helperText={touched.englishName && errors.englishName}
+          onBlur={handleBlur}
+          onChange={handleChange}
         />
         <CustomInput
           isNepali
@@ -80,10 +91,14 @@ export default function StateForm({
           id="nepali-name"
           name="nepaliName"
           label="Nepali name (नेपाली नाम)"
-          value={formData.nepaliName}
-          onChange={(e) => handleInputChange("nepaliName", e.target.value)}
+          value={values.nepaliName}
+          error={touched.nepaliName && Boolean(errors.nepaliName)}
+          helperText={errors.nepaliName && errors.nepaliName}
+          onBlur={handleBlur}
+          onChange={handleChange}
         />
         <Button
+          disabled={isSubmitting}
           type="submit"
           color="primary"
           sx={ButtonStyle}
