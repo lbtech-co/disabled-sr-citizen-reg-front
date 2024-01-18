@@ -1,9 +1,8 @@
 import { Button, Card, Typography } from "@mui/material";
 import CustomInput from "./CustomInput";
 import { CSSProperties, FormEvent, useEffect, useState } from "react";
-import { colors } from "../utils/Constants";
+import { BASE_URL, colors } from "../constants/constants";
 import axios from "axios";
-import { BASE_URL } from "../constants/constant";
 import { STATES_INITIAL_VALUES } from "../constants/initialValues";
 import {
   StateFormProps,

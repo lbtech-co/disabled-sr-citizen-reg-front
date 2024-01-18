@@ -1,7 +1,7 @@
 import { InputLabel, TextField } from "@mui/material";
 import preeti from "preeti";
 import { TextInputProps } from "../interfaces/ComponentInterface";
-import { colors } from "../utils/Constants";
+import { colors } from "../constants/constants";
 
 export default function CustomInput({
   error,

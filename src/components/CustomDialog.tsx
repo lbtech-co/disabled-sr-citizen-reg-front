@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { CSSProperties } from "react";
-import { colors } from "../utils/Constants";
+import { colors } from "../constants/constants";
 
 interface CustomDialogProps {
   open: boolean;

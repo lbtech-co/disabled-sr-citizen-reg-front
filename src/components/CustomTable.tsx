@@ -5,7 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { colors } from "../utils/Constants";
+import { colors } from "../constants/constants";
 import Icon from "./Icon";
 import IconButton from "@mui/material/IconButton";
 import { CSSProperties } from "react";

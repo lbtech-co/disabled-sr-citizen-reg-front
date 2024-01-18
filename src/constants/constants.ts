@@ -1,3 +1,5 @@
+export const BASE_URL = "https://disability-api.lbtechnology.co/api";
+
 export const colors = {
   red: "#B83955",
   blue: "#234A83",

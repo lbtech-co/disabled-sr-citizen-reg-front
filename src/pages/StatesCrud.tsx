@@ -6,7 +6,7 @@ import { StateData, TableHeaderProps } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
 import axios from "axios";
-import { BASE_URL } from "../constants/constant";
+import { BASE_URL } from "../constants/constants";
 
 const STATE_HEADERS: TableHeaderProps[] = [
   { id: "name", label: "Name (नाम)", align: "center" },
@@ -35,7 +35,7 @@ export default function StatesCrud() {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mappedData = statesData?.map((data: any) => ({
+  const mappedData = statesData.map((data: any) => ({
     englishName: data.english_name,
     nepaliName: data.nepali_name,
     id: data.id,
