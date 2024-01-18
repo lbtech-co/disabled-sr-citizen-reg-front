@@ -2,31 +2,21 @@ import { Button, Card, Typography } from "@mui/material";
 import CustomInput from "./CustomInput";
 import { CSSProperties, FormEvent, useEffect, useState } from "react";
 import { colors } from "../utils/Constants";
-import { StateData } from "../interfaces/ComponentInterface";
 import axios from "axios";
 import { BASE_URL } from "../constants/constant";
-
-interface FormData {
-  englishName: string;
-  nepaliName: string;
-  id?: string;
-}
-
-interface StateFormProps {
-  selectedState?: StateData | undefined;
-  fetchData: () => void;
-}
-
-const INITIAL_STATE: FormData = {
-  nepaliName: "",
-  englishName: "",
-};
+import { STATES_INITIAL_VALUES } from "../constants/initialValues";
+import {
+  StateFormProps,
+  StatesFormData,
+} from "../interfaces/ComponentInterface";
 
 export default function StateForm({
   selectedState,
   fetchData,
 }: StateFormProps) {
-  const [formData, setFormData] = useState<FormData>(INITIAL_STATE);
+  const [formData, setFormData] = useState<StatesFormData>(
+    STATES_INITIAL_VALUES,
+  );
 
   useEffect(() => {
     if (selectedState) {
@@ -34,7 +24,7 @@ export default function StateForm({
     }
   }, [selectedState]);
 
-  const handleInputChange = (name: keyof FormData, value: string) => {
+  const handleInputChange = (name: keyof StatesFormData, value: string) => {
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -55,7 +45,7 @@ export default function StateForm({
 
       if (response.status === 201) {
         fetchData();
-        setFormData(INITIAL_STATE);
+        setFormData(STATES_INITIAL_VALUES);
       }
     } catch (err) {
       console.log(err);

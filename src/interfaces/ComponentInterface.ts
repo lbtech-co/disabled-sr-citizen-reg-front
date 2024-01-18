@@ -40,3 +40,14 @@ export interface CustomTableProps {
   onUpdate?: (stateData: StateData | undefined) => void;
   onDelete?: (id: string) => void;
 }
+
+export interface StatesFormData {
+  englishName: string;
+  nepaliName: string;
+  id?: string;
+}
+
+export interface StateFormProps {
+  selectedState?: StateData | undefined;
+  fetchData: () => void;
+}
