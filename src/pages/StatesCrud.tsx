@@ -1,38 +1,61 @@
 import Container from "@mui/material/Container";
 import StateForm from "../components/StateForm";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import CustomTable from "../components/CustomTable";
 import { StateData, TableHeaderProps } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
+import axios from "axios";
+import { BASE_URL } from "../constants/constant";
 
 const STATE_HEADERS: TableHeaderProps[] = [
-  { label: "Name (नाम)", id: "name", align: "center" },
-];
-
-const STATES_DATA = [
-  { englishName: "Koshi", nepaliName: "कोशी", id: "1" },
-  { englishName: "Madhesh", nepaliName: "मधेश", id: "1" },
-  { englishName: "Bagmati", nepaliName: "बागमती", id: "1" },
-  { englishName: "Gandaki", nepaliName: "गण्डकी", id: "1" },
-  { englishName: "Lumbini", nepaliName: "लुम्बिनी", id: "1" },
-  { englishName: "Karnali", nepaliName: "कर्णाली", id: "1" },
-  { englishName: "Sudurpaschim", nepaliName: "सुदूरपश्चिम", id: "1" },
+  { id: "name", label: "Name (नाम)", align: "center" },
 ];
 
 export default function StatesCrud() {
   const [selectedState, setSelectedState] = useState<StateData>();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedId, setSelectedId] = useState("");
+  const [statesData, setStatesData] = useState<StateData[]>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    console.log("fetch");
+
+    try {
+      const response = await axios.get(`${BASE_URL}/State/GetAllStates`);
+
+      if (response.status === 200) {
+        setStatesData(response.data?.states);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mappedData = statesData?.map((data: any) => ({
+    englishName: data.english_name,
+    nepaliName: data.nepali_name,
+    id: data.id,
+  }));
 
   function handleDialog(id: string) {
     setSelectedId(id);
     setIsDialogOpen(true);
   }
 
-  function handleDelete() {
+  async function handleDelete() {
+    try {
+      await axios.delete(`${BASE_URL}/State/DeleteState?id=${selectedId}`);
+      fetchData();
+    } catch (err) {
+      console.log(err);
+    }
     setIsDialogOpen(false);
-    console.log(selectedId);
   }
 
   return (
@@ -42,12 +65,12 @@ export default function StatesCrud() {
           <div style={WrapperStyleTable}>
             <CustomTable
               headers={STATE_HEADERS}
-              data={STATES_DATA}
+              data={mappedData}
               onUpdate={(data) => setSelectedState(data)}
               onDelete={(id) => handleDialog(id)}
             />
           </div>
-          <StateForm selectedState={selectedState} />
+          <StateForm selectedState={selectedState} fetchData={fetchData} />
         </Container>
       </div>
       <CustomDialog

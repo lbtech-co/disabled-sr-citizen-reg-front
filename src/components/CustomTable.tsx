@@ -48,7 +48,7 @@ export default function CustomTable({
         <TableBody>
           {data.map((row, index) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell align="left">{index + 1}</TableCell>
@@ -74,10 +74,10 @@ export default function CustomTable({
                         })
                       }
                     >
-                      <Icon name="Write" />
+                      <Icon name="Write" style={iconStyle} />
                     </IconButton>
                     <IconButton onClick={() => onDelete?.(row.id)}>
-                      <Icon name="Delete" />
+                      <Icon name="Delete" style={iconStyle} />
                     </IconButton>
                   </div>
                 </TableCell>
@@ -93,4 +93,8 @@ export default function CustomTable({
 const HeaderCellStyle: CSSProperties = {
   color: colors.white,
   backgroundColor: colors.blue,
+};
+
+const iconStyle: CSSProperties = {
+  fontSize: "20px",
 };

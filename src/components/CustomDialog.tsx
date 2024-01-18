@@ -28,7 +28,8 @@ export default function CustomDialog({
       fullWidth
       PaperProps={{
         style: {
-          minHeight: "150px",
+          minHeight: "130px",
+          padding: "10px",
         },
       }}
     >
@@ -37,9 +38,9 @@ export default function CustomDialog({
       <DialogContent>
         <DialogContentText style={dialogStyle}>
           {dialogContent || (
-            <h4>
+            <span style={{ fontSize: "18px" }}>
               Are you sure want to delete this? This action can not be undone.
-            </h4>
+            </span>
           )}
         </DialogContentText>
       </DialogContent>
@@ -59,6 +60,7 @@ const cancelButtonStyle: CSSProperties = {
   backgroundColor: "#D10000",
   color: colors.white,
   textTransform: "none",
+  marginRight: "8px",
 };
 
 const submitButtonStyle: CSSProperties = {

@@ -3,17 +3,24 @@ import CustomInput from "./CustomInput";
 import { CSSProperties, FormEvent, useEffect, useState } from "react";
 import { colors } from "../utils/Constants";
 import { StateData } from "../interfaces/ComponentInterface";
+import axios from "axios";
+import { BASE_URL } from "../constants/constant";
 
 interface FormData {
   englishName: string;
   nepaliName: string;
+  id?: string;
 }
 
 interface StateFormProps {
   selectedState?: StateData | undefined;
+  fetchData: () => void;
 }
 
-export default function StateForm({ selectedState }: StateFormProps) {
+export default function StateForm({
+  selectedState,
+  fetchData,
+}: StateFormProps) {
   const [formData, setFormData] = useState<FormData>({
     nepaliName: "",
     englishName: "",
@@ -26,7 +33,6 @@ export default function StateForm({ selectedState }: StateFormProps) {
   }, [selectedState]);
 
   const handleInputChange = (name: keyof FormData, value: string) => {
-    console.log("Before Update - FormData:", formData);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -35,6 +41,35 @@ export default function StateForm({ selectedState }: StateFormProps) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const payload = formData.id
+      ? {
+          id: formData.id,
+          english_name: formData.englishName,
+          nepali_name: formData.nepaliName,
+        }
+      : {
+          english_name: formData.englishName,
+          nepali_name: formData.nepaliName,
+        };
+    console.log(payload);
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/State/CreateOrEdit`,
+        payload,
+      );
+
+      if (response.status === 201) {
+        fetchData();
+        setFormData({
+          nepaliName: "",
+          englishName: "",
+          id: "",
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
     console.log(formData);
   };
 
