@@ -7,3 +7,9 @@ export const colors = {
   white: "#F2F2F2",
   black: "#252725",
 };
+
+export const MENU_ITEMS = [
+  { title: "Home", path: "/", icon: "Home" },
+  { title: "States", path: "/states", icon: "States" },
+  { title: "Role", path: "/", icon: "Home" },
+];
