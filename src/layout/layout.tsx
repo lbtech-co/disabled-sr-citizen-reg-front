@@ -8,7 +8,6 @@ import MuiDrawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import CssBaseline from "@mui/material/CssBaseline";
 import { Theme, styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -35,7 +34,6 @@ export default function Layout() {
 
   return (
     <div style={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
