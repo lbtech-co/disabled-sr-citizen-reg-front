@@ -13,17 +13,19 @@ import { CustomTableProps } from "../interfaces/ComponentInterface";
 
 export default function CustomTable({
   headers,
-  data,
+  rows,
   onUpdate,
   onDelete,
+  mergeNames = false,
+  ...restProps
 }: CustomTableProps) {
   const headersList = headers.map((item) => item.id);
   const defaultAlign = "right";
   const hasActionButton = onUpdate || onDelete;
 
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="simple table">
+    <TableContainer component={Paper} sx={{ flexGrow: 1 }}>
+      <Table aria-label="simple table" {...restProps}>
         <TableHead>
           <TableRow>
             <TableCell sx={HeaderCellStyle} align="left">
@@ -46,7 +48,7 @@ export default function CustomTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row, index) => (
+          {rows.map((row, index) => (
             <TableRow
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -57,7 +59,7 @@ export default function CustomTable({
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
-                  {item === "name"
+                  {item === "name" && mergeNames
                     ? `${row.englishName} (${row.nepaliName})`
                     : row[item]}
                 </TableCell>

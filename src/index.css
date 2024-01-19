@@ -10,3 +10,7 @@
   --custom-white: #f2f2f2;
   --custom-black: #252725;
 }
+
+body {
+  background-color: var(--custom-white);
+}

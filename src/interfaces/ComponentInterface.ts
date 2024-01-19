@@ -1,3 +1,4 @@
+import { SelectProps, TableProps } from "@mui/material";
 import {
   FilledTextFieldProps,
   OutlinedTextFieldProps,
@@ -27,20 +28,6 @@ export interface StateData {
   id: string;
 }
 
-export interface CustomTableProps {
-  headers: {
-    label: string;
-    id: string;
-    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined;
-  }[];
-  data: {
-    //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
-  }[];
-  onUpdate?: (stateData: StateData | undefined) => void;
-  onDelete?: (id: string) => void;
-}
-
 export interface StatesFormData {
   englishName: string;
   nepaliName: string;
@@ -50,4 +37,29 @@ export interface StatesFormData {
 export interface StateFormProps {
   selectedState?: StateData | undefined;
   fetchData: () => void;
+}
+
+export interface SelectOptionInterface {
+  label: string;
+  value: string | number;
+}
+
+export interface CustomSelectProps extends SelectProps {
+  options: SelectOptionInterface[];
+}
+
+export interface CustomTableProps extends TableProps {
+  headers: {
+    label: string;
+    id: string;
+    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined;
+  }[];
+  rows: {
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+  }[];
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onUpdate?: (data: any) => void;
+  onDelete?: (id: string) => void;
+  mergeNames?: boolean;
 }

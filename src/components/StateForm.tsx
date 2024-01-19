@@ -76,6 +76,7 @@ export default function StateForm({
       <form style={FormStyle} onSubmit={handleSubmit}>
         <CustomInput
           fullWidth
+          type="text"
           id="english-name"
           name="englishName"
           label="English name (अंग्रेजी नाम)"
