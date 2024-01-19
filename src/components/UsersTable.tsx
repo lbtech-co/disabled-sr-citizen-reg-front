@@ -1,4 +1,4 @@
-import Table from "../components/CustomTable";
+import CustomTable from "../components/CustomTable";
 import Stack from "@mui/material/Stack";
 import { TableHeaderProps } from "../interfaces/ComponentInterface";
 import { TablePagination } from "@mui/material";
@@ -88,7 +88,7 @@ export default function UsersTable() {
 
   return (
     <Stack>
-      <Table
+      <CustomTable
         headers={headers}
         rows={rows}
         onUpdate={onUpdate}

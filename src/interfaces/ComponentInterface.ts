@@ -28,20 +28,6 @@ export interface StateData {
   id: string;
 }
 
-export interface CustomTableProps {
-  headers: {
-    label: string;
-    id: string;
-    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined;
-  }[];
-  data: {
-    //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
-  }[];
-  onUpdate?: (stateData: StateData | undefined) => void;
-  onDelete?: (id: string) => void;
-}
-
 export interface StatesFormData {
   englishName: string;
   nepaliName: string;
@@ -75,4 +61,5 @@ export interface CustomTableProps extends TableProps {
   //eslint-disable-next-line @typescript-eslint/no-explicit-any
   onUpdate?: (data: any) => void;
   onDelete?: (id: string) => void;
+  mergeNames?: boolean;
 }

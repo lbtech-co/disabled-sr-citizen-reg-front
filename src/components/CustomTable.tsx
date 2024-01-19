@@ -13,9 +13,10 @@ import { CustomTableProps } from "../interfaces/ComponentInterface";
 
 export default function CustomTable({
   headers,
-  data,
+  rows,
   onUpdate,
   onDelete,
+  mergeNames = false,
   ...restProps
 }: CustomTableProps) {
   const headersList = headers.map((item) => item.id);
@@ -47,7 +48,7 @@ export default function CustomTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row, index) => (
+          {rows.map((row, index) => (
             <TableRow
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -58,7 +59,7 @@ export default function CustomTable({
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
-                  {item === "name"
+                  {item === "name" && mergeNames
                     ? `${row.englishName} (${row.nepaliName})`
                     : row[item]}
                 </TableCell>

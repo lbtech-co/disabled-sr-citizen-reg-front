@@ -63,7 +63,8 @@ export default function StatesCrud() {
           <div style={WrapperStyleTable}>
             <CustomTable
               headers={STATE_HEADERS}
-              data={mappedData}
+              mergeNames
+              rows={mappedData}
               onUpdate={(data) => setSelectedState(data)}
               onDelete={(id) => handleDialog(id)}
             />
