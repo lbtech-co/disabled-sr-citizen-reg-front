@@ -1,0 +1,19 @@
+#states-crud-container {
+  width: 100%;
+  height: 100%;
+  margin-block: auto;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+@media screen and (max-width: 800px) {
+  #states-crud-container {
+    flex-direction: column;
+  }
+
+  #states-crud-container > * {
+    width: 100%;
+  }
+}
