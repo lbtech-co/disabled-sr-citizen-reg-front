@@ -12,16 +12,16 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Theme, styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { colors } from "../constants/constants";
+import { Link } from "react-router-dom";
+import { MENU_ITEMS } from "../constants/constants";
+import { DashboardRoutes } from "../AppRoutes";
 import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
-import { colors } from "../constants/constants";
-import { Link } from "react-router-dom";
-import { MENU_ITEMS } from "../constants/constants";
-import { DashboardRoutes } from "../AppRoutes";
 
 export default function Layout() {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
