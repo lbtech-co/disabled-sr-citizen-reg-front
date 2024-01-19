@@ -20,10 +20,15 @@ export default function CustomInput({
         width: fullWidth ? "100%" : "max-content",
       }}
     >
-      <InputLabel variant="standard" sx={{ color: colors.black }} size="normal">
+      <InputLabel
+        variant="standard"
+        sx={{ color: colors.black, marginBottom: "2px" }}
+        size="normal"
+      >
         {label}
       </InputLabel>
       <TextField
+        size="small"
         error={!!error}
         value={isNepali ? preeti(value) : value}
         {...restProps}

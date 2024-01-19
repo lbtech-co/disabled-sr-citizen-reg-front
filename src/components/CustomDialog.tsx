@@ -44,12 +44,12 @@ export default function CustomDialog({
           )}
         </DialogContentText>
       </DialogContent>
-      <DialogActions>
+      <DialogActions style={dialogActionStyle}>
         <Button onClick={handleClose} style={cancelButtonStyle}>
           Cancel
         </Button>
         <Button onClick={handleAgree} autoFocus style={submitButtonStyle}>
-          Submit
+          Confirm
         </Button>
       </DialogActions>
     </Dialog>
@@ -57,10 +57,14 @@ export default function CustomDialog({
 }
 
 const cancelButtonStyle: CSSProperties = {
-  backgroundColor: "#D10000",
+  backgroundColor: colors.red,
   color: colors.white,
   textTransform: "none",
-  marginRight: "8px",
+};
+
+const dialogActionStyle: CSSProperties = {
+  display: "flex",
+  gap: "8px",
 };
 
 const submitButtonStyle: CSSProperties = {
