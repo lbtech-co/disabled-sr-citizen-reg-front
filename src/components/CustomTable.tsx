@@ -5,14 +5,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { colors } from "../utils/Constants";
+import { colors } from "../constants/constants";
 import Icon from "./Icon";
 import IconButton from "@mui/material/IconButton";
+import { CSSProperties } from "react";
 import { CustomTableProps } from "../interfaces/ComponentInterface";
 
 export default function CustomTable({
   headers,
-  rows,
+  data,
   onUpdate,
   onDelete,
   ...restProps
@@ -26,18 +27,12 @@ export default function CustomTable({
       <Table aria-label="simple table" {...restProps}>
         <TableHead>
           <TableRow>
-            <TableCell
-              sx={{ color: colors.white, backgroundColor: colors.blue }}
-              align="left"
-            >
+            <TableCell sx={HeaderCellStyle} align="left">
               S.N
             </TableCell>
             {headers.map((item) => (
               <TableCell
-                sx={{
-                  color: colors.white,
-                  backgroundColor: colors.blue,
-                }}
+                sx={HeaderCellStyle}
                 align={item.align || defaultAlign}
                 key={item.id}
               >
@@ -45,39 +40,47 @@ export default function CustomTable({
               </TableCell>
             ))}
             {hasActionButton && (
-              <TableCell
-                sx={{ color: colors.white, backgroundColor: colors.blue }}
-                align="right"
-              >
+              <TableCell sx={HeaderCellStyle} align={defaultAlign}>
                 Action
               </TableCell>
             )}
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => (
+          {data.map((row, index) => (
             <TableRow
-              key={row.toString()}
+              key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell align="left">{index + 1}</TableCell>
               {headersList.map((item, index) => (
                 <TableCell
-                  sx={{ width: "max-content" }}
                   align={headers[index].align || defaultAlign}
                   key={item}
                 >
-                  {row[item]}
+                  {item === "name"
+                    ? `${row.englishName} (${row.nepaliName})`
+                    : row[item]}
                 </TableCell>
               ))}
               {hasActionButton && (
                 <TableCell align="right">
-                  <IconButton onClick={() => onUpdate?.(row)}>
-                    <Icon name="Write" />
-                  </IconButton>
-                  <IconButton onClick={() => onDelete?.(row.id)}>
-                    <Icon name="Delete" />
-                  </IconButton>
+                  <div>
+                    <IconButton
+                      onClick={() =>
+                        onUpdate?.({
+                          id: row.id,
+                          englishName: row.englishName,
+                          nepaliName: row.nepaliName,
+                        })
+                      }
+                    >
+                      <Icon name="Write" style={iconStyle} />
+                    </IconButton>
+                    <IconButton onClick={() => onDelete?.(row.id)}>
+                      <Icon name="Delete" style={iconStyle} />
+                    </IconButton>
+                  </div>
                 </TableCell>
               )}
             </TableRow>
@@ -87,3 +90,12 @@ export default function CustomTable({
     </TableContainer>
   );
 }
+
+const HeaderCellStyle: CSSProperties = {
+  color: colors.white,
+  backgroundColor: colors.blue,
+};
+
+const iconStyle: CSSProperties = {
+  fontSize: "20px",
+};

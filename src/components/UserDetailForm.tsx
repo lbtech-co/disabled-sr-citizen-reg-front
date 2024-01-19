@@ -1,7 +1,13 @@
-import { Button, Card, Container, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  Container,
+  Grid,
+  Typography,
+  colors,
+} from "@mui/material";
 import CustomInput from "./CustomInput";
 import CustomSelect from "./CustomSelect";
-import { colors } from "../utils/Constants";
 import { CSSProperties } from "react";
 import { useLocation } from "react-router-dom";
 

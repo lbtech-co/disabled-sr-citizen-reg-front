@@ -5,7 +5,7 @@ import { ThemeOptions } from "@mui/material/styles";
 export default function MUIThemeProvider({
   children,
 }: {
-  children: ReactNode
+  children: ReactNode;
 }) {
   const theme: ThemeOptions = createTheme({
     palette: {

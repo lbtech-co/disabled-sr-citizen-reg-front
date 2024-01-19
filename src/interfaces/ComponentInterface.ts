@@ -10,39 +10,69 @@ export interface TextInputProps
     FilledTextFieldProps | OutlinedTextFieldProps | StandardTextFieldProps,
     "variant"
   > {
-  isNepali?: boolean
-  name: string
-  id?: string
-  label: string
-  className?: string
+  isNepali?: boolean;
+  name: string;
+  label: string;
+  className?: string;
 }
 
 export interface TableHeaderProps {
-  label: string
-  id: string
-  align?: "center" | "left" | "right" | "inherit" | "justify" | undefined
+  label: string;
+  id: string;
+  align?: "center" | "left" | "right" | "inherit" | "justify" | undefined;
+}
+
+export interface StateData {
+  englishName: string;
+  nepaliName: string;
+  id: string;
+}
+
+export interface CustomTableProps {
+  headers: {
+    label: string;
+    id: string;
+    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined;
+  }[];
+  data: {
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+  }[];
+  onUpdate?: (stateData: StateData | undefined) => void;
+  onDelete?: (id: string) => void;
+}
+
+export interface StatesFormData {
+  englishName: string;
+  nepaliName: string;
+  id?: string;
+}
+
+export interface StateFormProps {
+  selectedState?: StateData | undefined;
+  fetchData: () => void;
 }
 
 export interface SelectOptionInterface {
-  label: string
-  value: string | number
+  label: string;
+  value: string | number;
 }
 
 export interface CustomSelectProps extends SelectProps {
-  options: SelectOptionInterface[]
+  options: SelectOptionInterface[];
 }
 
 export interface CustomTableProps extends TableProps {
   headers: {
-    label: string
-    id: string
-    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined
-  }[]
+    label: string;
+    id: string;
+    align?: "center" | "left" | "right" | "inherit" | "justify" | undefined;
+  }[];
   rows: {
     //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any
-  }[]
+    [key: string]: any;
+  }[];
   //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onUpdate?: (data: any) => void
-  onDelete?: (id: string) => void
+  onUpdate?: (data: any) => void;
+  onDelete?: (id: string) => void;
 }

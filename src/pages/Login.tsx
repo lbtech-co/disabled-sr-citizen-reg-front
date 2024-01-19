@@ -8,7 +8,7 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-import { colors } from "../utils/Constants";
+import { colors } from "../constants/constants";
 import CustomInput from "../components/CustomInput";
 import { CSSProperties } from "react";
 

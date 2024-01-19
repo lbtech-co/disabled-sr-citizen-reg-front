@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import HomeIcon from "@mui/icons-material/Home";
 
 interface IconsComponentProps extends SvgIconProps {
-  name: string
+  name: string;
 }
 
 export default function Icon({ name, ...rest }: IconsComponentProps) {

@@ -1,4 +1,4 @@
-import Table from "../components/Table";
+import Table from "../components/CustomTable";
 import Stack from "@mui/material/Stack";
 import { TableHeaderProps } from "../interfaces/ComponentInterface";
 import { TablePagination } from "@mui/material";

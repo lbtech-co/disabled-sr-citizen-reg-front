@@ -1,7 +1,7 @@
 import { InputLabel, MenuItem, Select } from "@mui/material";
-import { colors } from "../utils/Constants";
 import { CustomSelectProps } from "../interfaces/ComponentInterface";
 import { CSSProperties } from "react";
+import { colors } from "../constants/constants";
 
 export default function CustomSelect({
   label,
