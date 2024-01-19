@@ -1,4 +1,3 @@
-import Container from "@mui/material/Container";
 import StateForm from "../components/StateForm";
 import { useEffect, useState } from "react";
 import CustomTable from "../components/CustomTable";
@@ -59,7 +58,7 @@ export default function StatesCrud() {
   return (
     <React.Fragment>
       <div style={{ display: "flex" }}>
-        <Container id="states-crud-container">
+        <div id="states-crud-container">
           <div id="states-crud-table">
             <CustomTable
               headers={STATE_HEADERS}
@@ -69,7 +68,7 @@ export default function StatesCrud() {
             />
           </div>
           <StateForm selectedState={selectedState} fetchData={fetchData} />
-        </Container>
+        </div>
       </div>
       <CustomDialog
         open={isDialogOpen}

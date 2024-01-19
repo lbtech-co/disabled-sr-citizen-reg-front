@@ -103,7 +103,7 @@ export default function Layout() {
   );
 }
 
-const drawerWidth: number = 256;
+const drawerWidth: string = "256px";
 const appBarHeight: string = "65px";
 
 interface AppBarProps extends MuiAppBarProps {
@@ -113,7 +113,7 @@ interface AppBarProps extends MuiAppBarProps {
 const MainContent = styled("div")(({ theme }) => ({
   flexGrow: 1,
   marginTop: appBarHeight,
-  height: `calc(100vh - ${appBarHeight})`,
+  height: "calc(100vh - 130px)",
   width: "100%",
   overflow: "auto",
   padding: theme.spacing(4),
@@ -135,7 +135,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   ...(open && {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+    width: `calc(100% - ${drawerWidth})`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
