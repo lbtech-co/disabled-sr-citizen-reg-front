@@ -80,8 +80,8 @@ export default function StateForm({
           name="englishName"
           label="English name (अंग्रेजी नाम)"
           value={values.englishName}
-          error={touched?.englishName}
-          helperText={touched?.englishName && errors.englishName}
+          error={touched.englishName && Boolean(errors.englishName)}
+          helperText={touched.englishName && errors.englishName}
           onBlur={handleBlur}
           onChange={handleChange}
         />
@@ -92,7 +92,7 @@ export default function StateForm({
           name="nepaliName"
           label="Nepali name (नेपाली नाम)"
           value={values.nepaliName}
-          error={touched?.nepaliName}
+          error={touched.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}
           onBlur={handleBlur}
           onChange={handleChange}
