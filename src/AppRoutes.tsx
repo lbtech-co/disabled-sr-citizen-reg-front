@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
-import StatesCrud from "./pages/statesCrud";
+import StatesCrud from "./pages/StatesCrud";
 
 export function DashboardRoutes() {
   return (
