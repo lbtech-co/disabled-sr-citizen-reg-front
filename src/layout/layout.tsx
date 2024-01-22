@@ -5,7 +5,6 @@ import Badge from "@mui/material/Badge";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import MuiDrawer from "@mui/material/Drawer";
-import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Theme, styled } from "@mui/material/styles";
@@ -40,18 +39,6 @@ export default function Layout() {
             height: "65px",
           }}
         >
-          <IconButton
-            edge="start"
-            aria-label="open drawer"
-            onClick={toggleDrawer}
-            sx={{
-              marginRight: "36px",
-              color: "grey.50",
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
           <IconButton color="inherit" sx={{ marginLeft: "auto" }}>
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon sx={{ color: "grey.50" }} />
@@ -67,7 +54,7 @@ export default function Layout() {
             justifyContent: "flex-end",
             textAlign: "left",
             pl: [2],
-            pr: [1],
+            pr: open ? [1] : "",
           }}
         >
           <Typography
@@ -83,7 +70,7 @@ export default function Layout() {
             अपांग र जेष्ठ नागरिक दर्ता
           </Typography>
           <IconButton onClick={toggleDrawer}>
-            <Icon name="Left" />
+            <Icon name={open ? "Left" : "Bars"} />
           </IconButton>
         </Toolbar>
         <Divider />
@@ -125,9 +112,9 @@ const MainContent = styled("div")(({ theme }) => ({
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
+  // zIndex: theme.zIndex.drawer + 1,
   backgroundColor: "white",
-  boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+  boxShadow: "0 0.125rem 0.625rem rgba(90,97,105,.12)",
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -151,6 +138,8 @@ const Drawer = styled(MuiDrawer, {
     whiteSpace: "nowrap",
     width: drawerWidth,
     backgroundColor: "white",
+    boxShadow:
+      "0 0.125rem 9.375rem rgba(90,97,105,.1), 0 0.25rem 0.5rem rgba(90,97,105,.12), 0 0.9375rem 1.375rem rgba(90,97,105,.1), 0 0.4375rem 2.1875rem rgba(165,182,201,.1)",
     height: "100vh",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
