@@ -39,18 +39,6 @@ export default function Layout() {
             height: "65px",
           }}
         >
-          {/* <IconButton
-            edge="start"
-            aria-label="open drawer"
-            onClick={toggleDrawer}
-            sx={{
-              marginRight: "36px",
-              color: "grey.50",
-              ...(open && { display: "none" }),
-            }}
-          >
-           <MenuIcon />
-          </IconButton> */}
           <IconButton color="inherit" sx={{ marginLeft: "auto" }}>
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon sx={{ color: "grey.50" }} />
