@@ -13,6 +13,7 @@ import DistrictForm from "../components/forms/DistrictForm";
 
 const STATE_HEADERS: TableHeaderProps[] = [
   { id: "name", label: "Name (नाम)", align: "center" },
+  { id: "stateName", label: "State", align: "center" },
 ];
 
 export default function DistrictCrud() {
@@ -57,12 +58,19 @@ export default function DistrictCrud() {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mappedData = districtData.map((data: any) => ({
-    englishName: data.english_name,
-    nepaliName: data.nepali_name,
-    stateId: data.state_id,
-    id: data.id,
-  }));
+  const mappedDistrictData = districtData?.map((data: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const matchingState: any = statesData?.find(
+      (state) => state.id === data.state_id,
+    );
+    return {
+      englishName: data.english_name,
+      nepaliName: data.nepali_name,
+      stateId: data.state_id,
+      stateName: matchingState?.english_name,
+      id: data.id,
+    };
+  });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mappedStatesData = statesData.map((data: any) => ({
@@ -95,7 +103,7 @@ export default function DistrictCrud() {
           <div id="states-crud-table">
             <CustomTable
               headers={STATE_HEADERS}
-              data={mappedData}
+              data={mappedDistrictData}
               onUpdate={(data) => setSelectedDistrict(data)}
               onDelete={(id) => handleDialog(id)}
             />

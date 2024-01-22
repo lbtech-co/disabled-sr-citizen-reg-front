@@ -31,7 +31,7 @@ export default function DistrictForm({
   fetchData,
   statesData,
 }: DistrictFormProps) {
-  const [stateData, setStateData] = useState<StateData[] | null>(null);
+  const [stateData, setStateData] = useState<StateData[]>();
   const {
     values,
     errors,
@@ -60,7 +60,6 @@ export default function DistrictForm({
     if (statesData) {
       setStateData(statesData);
     }
-     
   }, [statesData]);
 
   const handleSubmitForm = async (formValues: DistrictFormData) => {
@@ -88,9 +87,6 @@ export default function DistrictForm({
     }
   };
 
-  console.log(values);
-  // console.log(selectedData);
-
   return (
     <Card sx={WrapperStyle}>
       <Typography
@@ -109,6 +105,7 @@ export default function DistrictForm({
         <div style={selectWrapper}>
           <InputLabel style={{ color: colors.black }}>Select State</InputLabel>
           <Select
+            label="Select state"
             size="small"
             variant="outlined"
             fullWidth

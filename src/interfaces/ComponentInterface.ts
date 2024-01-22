@@ -53,7 +53,7 @@ export interface StatesFormData {
 }
 
 export interface DistrictFormData extends StatesFormData {
-  stateId: null | number;
+  stateId: string;
 }
 
 export interface StateFormProps {
@@ -63,6 +63,5 @@ export interface StateFormProps {
 }
 
 export interface DistrictFormProps extends StateFormProps {
-   
   statesData: StateData[];
 }

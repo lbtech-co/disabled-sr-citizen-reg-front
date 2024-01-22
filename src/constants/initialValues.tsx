@@ -11,5 +11,5 @@ export const STATES_INITIAL_VALUES: StatesFormData = {
 export const DISTRICT_INITIAL_VALUES: DistrictFormData = {
   nepaliName: "",
   englishName: "",
-  stateId: null,
+  stateId: "",
 };

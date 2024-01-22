@@ -2,7 +2,7 @@ import { SvgIconProps } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import HomeIcon from "@mui/icons-material/Home";
-import { ListAlt } from "@mui/icons-material";
+import { ListAlt, Map } from "@mui/icons-material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 interface IconsComponentProps extends SvgIconProps {
@@ -15,10 +15,12 @@ export default function Icon({ name, ...rest }: IconsComponentProps) {
       return <EditIcon {...rest} />;
     case "Delete":
       return <DeleteIcon {...rest} />;
-    case "States":
+    case "District":
       return <ListAlt {...rest} />;
     case "Left":
       return <ChevronLeftIcon {...rest} />;
+    case "States":
+      return <Map {...rest} />;
     default:
       return <HomeIcon {...rest} />;
   }
