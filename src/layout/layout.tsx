@@ -11,7 +11,6 @@ import Typography from "@mui/material/Typography";
 import { Theme, styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { colors } from "../constants/constants";
 import { Link } from "react-router-dom";
 import { MENU_ITEMS } from "../constants/constants";
 import { DashboardRoutes } from "../AppRoutes";
@@ -43,11 +42,11 @@ export default function Layout() {
         >
           <IconButton
             edge="start"
-            color="inherit"
             aria-label="open drawer"
             onClick={toggleDrawer}
             sx={{
               marginRight: "36px",
+              color: "grey.50",
               ...(open && { display: "none" }),
             }}
           >
@@ -55,7 +54,7 @@ export default function Layout() {
           </IconButton>
           <IconButton color="inherit" sx={{ marginLeft: "auto" }}>
             <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
+              <NotificationsIcon sx={{ color: "grey.50" }} />
             </Badge>
           </IconButton>
         </Toolbar>
@@ -72,6 +71,7 @@ export default function Layout() {
           }}
         >
           <Typography
+            color="grey.900"
             noWrap
             sx={{
               flexGrow: 1,
@@ -83,7 +83,7 @@ export default function Layout() {
             अपांग र जेष्ठ नागरिक दर्ता
           </Typography>
           <IconButton onClick={toggleDrawer}>
-            <Icon name="Left" sx={{ color: colors.white }} />
+            <Icon name="Left" />
           </IconButton>
         </Toolbar>
         <Divider />
@@ -91,9 +91,9 @@ export default function Layout() {
           {MENU_ITEMS.map((menu) => (
             <ListItemButton component={Link} to={menu.path} key={menu.title}>
               <ListItemIcon>
-                <Icon name={menu.icon} sx={{ color: colors.white }} />
+                <Icon name={menu.icon} />
               </ListItemIcon>
-              <ListItemText primary={menu.title} />
+              <ListItemText secondary={menu.title} color="grey.900" />
             </ListItemButton>
           ))}
         </List>
@@ -126,7 +126,8 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  backgroundeColor: colors.blue,
+  backgroundColor: "white",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -146,11 +147,10 @@ const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
   "& .MuiDrawer-paper": {
-    color: colors.white,
     position: "relative",
     whiteSpace: "nowrap",
     width: drawerWidth,
-    backgroundColor: colors.blue,
+    backgroundColor: "white",
     height: "100vh",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
