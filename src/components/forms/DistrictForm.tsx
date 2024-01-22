@@ -7,22 +7,31 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import CustomInput from "./CustomInput";
-import { CSSProperties, useEffect } from "react";
-import { BASE_URL, colors } from "../constants/constants";
+import CustomInput from "../CustomInput";
+import { useEffect, useState } from "react";
+import { BASE_URL, colors } from "../../constants/constants";
 import axios from "axios";
-import { DISTRICT_INITIAL_VALUES } from "../constants/initialValues";
+import { DISTRICT_INITIAL_VALUES } from "../../constants/initialValues";
 import {
   DistrictFormData,
-  StateFormProps,
-} from "../interfaces/ComponentInterface";
+  DistrictFormProps,
+  StateData,
+} from "../../interfaces/ComponentInterface";
 import { useFormik } from "formik";
-import { DISTRICT_SCHEMA } from "../constants/schema";
+import { DISTRICT_SCHEMA } from "../../constants/schema";
+import {
+  WrapperStyle,
+  FormStyle,
+  selectWrapper,
+  FormButtonStyle,
+} from "../../constants/styles";
 
 export default function DistrictForm({
-  selectedState,
+  selectedData,
   fetchData,
-}: StateFormProps) {
+  statesData,
+}: DistrictFormProps) {
+  const [stateData, setStateData] = useState<StateData[] | null>(null);
   const {
     values,
     errors,
@@ -41,11 +50,18 @@ export default function DistrictForm({
   });
 
   useEffect(() => {
-    if (selectedState) {
-      setValues(selectedState);
+    if (selectedData) {
+      setValues(selectedData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedState]);
+  }, [selectedData]);
+
+  useEffect(() => {
+    if (statesData) {
+      setStateData(statesData);
+    }
+     
+  }, [statesData]);
 
   const handleSubmitForm = async (formValues: DistrictFormData) => {
     const { englishName, nepaliName, stateId, id } = formValues;
@@ -72,6 +88,9 @@ export default function DistrictForm({
     }
   };
 
+  console.log(values);
+  // console.log(selectedData);
+
   return (
     <Card sx={WrapperStyle}>
       <Typography
@@ -94,13 +113,16 @@ export default function DistrictForm({
             variant="outlined"
             fullWidth
             value={values.stateId}
-            onChange={(e) => setFieldValue("state_id", e.target.value)}
+            onChange={(e) => setFieldValue("stateId", e.target.value)}
             error={touched?.stateId && Boolean(errors.stateId)}
             onBlur={handleBlur}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {stateData?.map((data) => (
+              <MenuItem
+                key={data.id}
+                value={data.id}
+              >{`${data.englishName} (${data.nepaliName})`}</MenuItem>
+            ))}
           </Select>
           <FormHelperText>{touched?.stateId && errors.stateId}</FormHelperText>
         </div>
@@ -131,7 +153,7 @@ export default function DistrictForm({
           disabled={isSubmitting}
           type="submit"
           color="primary"
-          sx={ButtonStyle}
+          sx={FormButtonStyle}
           variant="contained"
         >
           Submit
@@ -140,36 +162,3 @@ export default function DistrictForm({
     </Card>
   );
 }
-
-const selectWrapper: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  gap: 2,
-  width: "100%",
-};
-
-const WrapperStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  width: "40%",
-  justifyContent: "space-between",
-};
-const ButtonStyle: CSSProperties = {
-  width: "max-content",
-  height: "45px",
-  paddingInline: 10,
-  marginInline: "auto",
-};
-
-const FormStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "start",
-  justifyContent: "center",
-  width: "100%",
-  gap: "40px",
-  flex: 1,
-  padding: "20px",
-  boxSizing: "border-box",
-};

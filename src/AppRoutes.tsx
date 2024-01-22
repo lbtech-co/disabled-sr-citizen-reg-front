@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
-import District from "./pages/district";
+import DistrictCrud from "./pages/DistrictCrud";
 import StatesCrud from "./pages/statesCrud";
 
 export function DashboardRoutes() {
@@ -8,7 +8,7 @@ export function DashboardRoutes() {
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path="/states" element={<StatesCrud />} />
-      <Route path="/district" element={<District />} />
+      <Route path="/district" element={<DistrictCrud />} />
     </Routes>
   );
 }

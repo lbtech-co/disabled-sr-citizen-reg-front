@@ -58,6 +58,11 @@ export interface DistrictFormData extends StatesFormData {
 
 export interface StateFormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  selectedState?: any;
+  selectedData?: any;
   fetchData: () => void;
+}
+
+export interface DistrictFormProps extends StateFormProps {
+   
+  statesData: StateData[];
 }

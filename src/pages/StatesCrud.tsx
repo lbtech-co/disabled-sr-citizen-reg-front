@@ -1,4 +1,4 @@
-import StateForm from "../components/StateForm";
+import StateForm from "../components/forms/StateForm";
 import { useEffect, useState } from "react";
 import CustomTable from "../components/CustomTable";
 import { StateData, TableHeaderProps } from "../interfaces/ComponentInterface";
@@ -67,7 +67,7 @@ export default function StatesCrud() {
               onDelete={(id) => handleDialog(id)}
             />
           </div>
-          <StateForm selectedState={selectedState} fetchData={fetchData} />
+          <StateForm selectedData={selectedState} fetchData={fetchData} />
         </div>
       </div>
       <CustomDialog
