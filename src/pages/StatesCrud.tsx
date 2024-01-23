@@ -1,6 +1,5 @@
-import Container from "@mui/material/Container";
 import StateForm from "../components/StateForm";
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CustomTable from "../components/CustomTable";
 import { StateData, TableHeaderProps } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
@@ -58,9 +57,9 @@ export default function StatesCrud() {
 
   return (
     <React.Fragment>
-      <div style={WrapperStyle}>
-        <Container id="states-crud-container">
-          <div style={WrapperStyleTable}>
+      <div style={{ display: "flex" }}>
+        <div id="states-crud-container">
+          <div id="states-crud-table">
             <CustomTable
               headers={STATE_HEADERS}
               data={mappedData}
@@ -69,7 +68,7 @@ export default function StatesCrud() {
             />
           </div>
           <StateForm selectedState={selectedState} fetchData={fetchData} />
-        </Container>
+        </div>
       </div>
       <CustomDialog
         open={isDialogOpen}
@@ -79,8 +78,3 @@ export default function StatesCrud() {
     </React.Fragment>
   );
 }
-const WrapperStyle: CSSProperties = { minHeight: "100vh", display: "flex" };
-const WrapperStyleTable: CSSProperties = {
-  width: "60%",
-  height: "max-content",
-};

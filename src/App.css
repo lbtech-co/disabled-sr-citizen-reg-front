@@ -8,6 +8,15 @@
   align-items: stretch;
 }
 
+#states-crud-table {
+  width: 60%;
+}
+
+#table-action-icons {
+  display: flex;
+  justify-content: end;
+}
+
 @media screen and (max-width: 800px) {
   #states-crud-container {
     flex-direction: column;

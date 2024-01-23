@@ -64,7 +64,7 @@ export default function CustomTable({
               ))}
               {hasActionButton && (
                 <TableCell align="right">
-                  <div>
+                  <div id="table-action-icons">
                     <IconButton
                       onClick={() =>
                         onUpdate?.({

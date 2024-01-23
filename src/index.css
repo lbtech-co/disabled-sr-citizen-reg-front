@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  background-color: #f2f2f2;
+}
+
 :root {
   --custom-red: #b83955;
   --custom-blue: #234a83;

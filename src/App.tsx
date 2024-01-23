@@ -1,8 +1,8 @@
 import "./App.css";
-import StatesCrud from "./pages/StatesCrud";
+import Layout from "./layout/layout";
 
 function App() {
-  return <StatesCrud />;
+  return <Layout />;
 }
 
 export default App;
