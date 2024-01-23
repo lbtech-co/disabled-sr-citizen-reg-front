@@ -6,20 +6,25 @@ import { BASE_URL } from "../constants/constants";
 interface AppContextType {
   statesData: StateData[];
   districtData: DistrictData[];
+  localLevelData: DistrictData[];
   fetchStatesData: () => void;
   fetchDistrictData: () => void;
+  fetchLocalLevelData: () => void;
 }
 
 const AppContext = createContext<AppContextType>({
   statesData: [],
   districtData: [],
+  localLevelData: [],
   fetchStatesData: () => {},
   fetchDistrictData: () => {},
+  fetchLocalLevelData: () => {},
 });
 
 const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [statesData, setStatesData] = useState<StateData[]>([]);
   const [districtData, setDistrictData] = useState<DistrictData[]>([]);
+  const [localLevelData, setLocalLevelData] = useState<DistrictData[]>([]);
 
   useEffect(() => {
     fetchStatesData();
@@ -32,7 +37,14 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statesData]);
-   
+
+  useEffect(() => {
+    if (statesData) {
+      fetchLocalLevelData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statesData]);
+
   const fetchData = async (
     endpoint: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -47,6 +59,12 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const fetchLocalLevelData = () => {
+    fetchData("Local/GetAllLocals", (data) => {
+      setLocalLevelData(data.locals);
+    });
   };
 
   const fetchDistrictData = () => {
@@ -64,10 +82,13 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const contextValue: AppContextType = {
     statesData,
     districtData,
+    localLevelData,
     fetchStatesData,
     fetchDistrictData,
+    fetchLocalLevelData,
   };
 
+  console.log(contextValue);
   return (
     <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
