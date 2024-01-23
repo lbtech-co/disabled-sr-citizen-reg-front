@@ -56,6 +56,15 @@ export interface DistrictFormData extends StatesFormData {
   stateId: string;
 }
 
+export interface LocalLevelFormData extends DistrictFormData {
+  type:
+    | "vdc"
+    | "municipality"
+    | "sub_metropolitan"
+    | "metropolitan"
+    | undefined;
+}
+
 export interface StateFormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedData?: any;

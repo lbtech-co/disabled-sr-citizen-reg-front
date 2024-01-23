@@ -1,20 +1,13 @@
 import { useContext, useState } from "react";
 import CustomTable from "../components/CustomTable";
-import {
-  DistrictData,
-  TableHeaderProps,
-} from "../interfaces/ComponentInterface";
+import { DistrictData } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
-import DistrictForm from "../components/forms/DistrictForm";
 import { AppContext } from "../utils/Context";
-
-const STATE_HEADERS: TableHeaderProps[] = [
-  { id: "name", label: "Name (नाम)", align: "center" },
-  { id: "stateName", label: "State", align: "center" },
-];
+import { LOCAL_LEVEL_HEADERS } from "../constants/tableHeaders";
+import LocalLevelForm from "../components/forms/LocalLevelForm";
 
 export default function LocalLevelCrud() {
   const { statesData, localLevelData, fetchLocalLevelData } =
@@ -53,9 +46,7 @@ export default function LocalLevelCrud() {
 
   async function handleDelete() {
     try {
-      await axios.delete(
-        `${BASE_URL}/District/DeleteDistrict?id=${selectedId}`,
-      );
+      await axios.delete(`${BASE_URL}/Local/DeleteLocal?id=${selectedId}`);
       fetchLocalLevelData();
     } catch (err) {
       console.log(err);
@@ -69,13 +60,13 @@ export default function LocalLevelCrud() {
         <div id="states-crud-container">
           <div id="states-crud-table">
             <CustomTable
-              headers={STATE_HEADERS}
+              headers={LOCAL_LEVEL_HEADERS}
               data={mappedLocalLevelData}
               onUpdate={(data) => setSelectedDistrict(data)}
               onDelete={(id) => handleDialog(id)}
             />
           </div>
-          <DistrictForm
+          <LocalLevelForm
             selectedData={selectedDistrict}
             statesData={mappedStatesData}
             fetchData={fetchLocalLevelData}

@@ -12,5 +12,12 @@ export const MENU_ITEMS = [
   { title: "Home", path: "/", icon: "Home" },
   { title: "States", path: "/states", icon: "States" },
   { title: "Districts", path: "/districts", icon: "District" },
-  { title: "Role", path: "/", icon: "Home" },
+  { title: "Local Level", path: "/locallevel", icon: "District" },
+];
+
+export const LOCAL_LEVEL_TYPES = [
+  { id: 1, title: "vdc" },
+  { id: 2, title: "municipality" },
+  { id: 3, title: "sub_metropolitan" },
+  { id: 4, title: "metropolitan" },
 ];
