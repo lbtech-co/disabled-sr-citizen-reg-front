@@ -28,7 +28,7 @@ export interface StateData {
 }
 
 export interface DistrictData extends StateData {
-  stateId: null | number;
+  stateId: string;
 }
 
 export interface CustomTableProps {
