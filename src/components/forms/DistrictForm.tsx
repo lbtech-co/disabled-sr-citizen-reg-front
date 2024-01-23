@@ -120,7 +120,9 @@ export default function DistrictForm({
               >{`${data.englishName} (${data.nepaliName})`}</MenuItem>
             ))}
           </Select>
-          <FormHelperText>{touched?.stateId && errors.stateId}</FormHelperText>
+          <FormHelperText sx={{ color: "red" }}>
+            {touched?.stateId && errors.stateId}
+          </FormHelperText>
         </div>
         <CustomInput
           fullWidth
