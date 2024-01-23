@@ -25,12 +25,14 @@ import {
   selectWrapper,
   FormButtonStyle,
 } from "../../constants/styles";
+import { useTranslation } from "react-i18next";
 
 export default function DistrictForm({
   selectedData,
   fetchData,
   statesData,
 }: DistrictFormProps) {
+  const { t } = useTranslation();
   const [stateData, setStateData] = useState<StateData[]>();
   const {
     values,
@@ -128,7 +130,7 @@ export default function DistrictForm({
           fullWidth
           id="english-name"
           name="englishName"
-          label="English name (अंग्रेजी नाम)"
+          label={t("English name")}
           value={values.englishName}
           error={touched?.englishName && Boolean(errors.englishName)}
           helperText={touched?.englishName && errors.englishName}
@@ -140,7 +142,7 @@ export default function DistrictForm({
           fullWidth
           id="nepali-name"
           name="nepaliName"
-          label="Nepali name (नेपाली नाम)"
+          label={t("Nepali name")}
           value={values.nepaliName}
           error={touched?.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}

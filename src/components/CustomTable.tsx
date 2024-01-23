@@ -10,6 +10,7 @@ import Icon from "./Icon";
 import IconButton from "@mui/material/IconButton";
 import { CSSProperties } from "react";
 import { CustomTableProps } from "../interfaces/ComponentInterface";
+import { useTranslation } from "react-i18next";
 
 export default function CustomTable({
   headers,
@@ -17,6 +18,7 @@ export default function CustomTable({
   onUpdate,
   onDelete,
 }: CustomTableProps) {
+  const { t } = useTranslation();
   const headersList = headers.map((item) => item.id);
   const defaultAlign = "right";
   const hasActionButton = onUpdate || onDelete;
@@ -27,7 +29,7 @@ export default function CustomTable({
         <TableHead>
           <TableRow>
             <TableCell sx={HeaderCellStyle} align="left">
-              S.N
+              {t("SN")}
             </TableCell>
             {headers.map((item) => (
               <TableCell
@@ -35,12 +37,12 @@ export default function CustomTable({
                 align={item.align || defaultAlign}
                 key={item.id}
               >
-                {item.label}
+                {t(item.label)}
               </TableCell>
             ))}
             {hasActionButton && (
               <TableCell sx={HeaderCellStyle} align={defaultAlign}>
-                Action
+                {t("Action")}
               </TableCell>
             )}
           </TableRow>

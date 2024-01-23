@@ -15,8 +15,11 @@ import {
   FormStyle,
   WrapperStyle,
 } from "../../constants/styles";
+import { useTranslation } from "react-i18next";
 
 export default function StateForm({ selectedData, fetchData }: StateFormProps) {
+  const { t } = useTranslation();
+
   const {
     values,
     errors,
@@ -80,7 +83,7 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
           fullWidth
           id="english-name"
           name="englishName"
-          label="English name (अंग्रेजी नाम)"
+          label={t("English name")}
           value={values.englishName}
           error={touched?.englishName && Boolean(errors.englishName)}
           helperText={touched?.englishName && errors.englishName}
@@ -92,7 +95,7 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
           fullWidth
           id="nepali-name"
           name="nepaliName"
-          label="Nepali name (नेपाली नाम)"
+          label={t("Nepali name")}
           value={values.nepaliName}
           error={touched?.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}

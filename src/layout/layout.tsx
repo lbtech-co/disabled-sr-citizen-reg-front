@@ -19,15 +19,28 @@ import {
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
+import { i18n } from "../i18n";
+import { useTranslation } from "react-i18next";
 
 export default function Layout() {
+  const { t } = useTranslation();
+
   const isSmallScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm"),
   );
   const [open, setOpen] = React.useState(!isSmallScreen);
+  const [, setKey] = React.useState(0);
 
   const toggleDrawer = () => {
     setOpen(!open);
+  };
+
+  const handleLanguageSwitch = () => {
+    const newLanguage = i18n.language === "en" ? "ne" : "en";
+    i18n.changeLanguage(newLanguage);
+
+    // Force a re-render by changing the key
+    setKey((prevKey) => prevKey + 1);
   };
 
   return (
@@ -43,6 +56,11 @@ export default function Layout() {
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon sx={{ color: "grey.50" }} />
             </Badge>
+          </IconButton>
+          <IconButton color="inherit" onClick={handleLanguageSwitch}>
+            <Typography color="textPrimary">
+              {i18n.language === "en" ? "NE" : "EN"}
+            </Typography>
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -62,12 +80,12 @@ export default function Layout() {
             noWrap
             sx={{
               flexGrow: 1,
-              fontSize: "18px",
+              fontSize: i18n.language === "en" ? "11px" : "18px",
               fontWeight: "500",
               padding: 0,
             }}
           >
-            अपांग र जेष्ठ नागरिक दर्ता
+            {t("AppTitle")}
           </Typography>
           <IconButton onClick={toggleDrawer}>
             <Icon name={open ? "Left" : "Bars"} />
@@ -80,7 +98,7 @@ export default function Layout() {
               <ListItemIcon>
                 <Icon name={menu.icon} />
               </ListItemIcon>
-              <ListItemText secondary={menu.title} color="grey.900" />
+              <ListItemText secondary={t(menu.title)} color="grey.900" />
             </ListItemButton>
           ))}
         </List>
