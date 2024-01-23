@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
 import CustomTable from "../components/CustomTable";
-import {
-  DistrictData,
-  StateData,
-  TableHeaderProps,
-} from "../interfaces/ComponentInterface";
+import { DistrictData, StateData } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
 import DistrictForm from "../components/forms/DistrictForm";
-
-const STATE_HEADERS: TableHeaderProps[] = [
-  { id: "name", label: "Name (नाम)", align: "center" },
-  { id: "stateName", label: "State", align: "center" },
-];
+import { DISTRICT_HEADERS } from "../constants/tableHeaders";
 
 export default function DistrictCrud() {
   const [selectedDistrict, setSelectedDistrict] = useState<DistrictData>();
@@ -102,7 +94,7 @@ export default function DistrictCrud() {
         <div id="states-crud-container">
           <div id="states-crud-table">
             <CustomTable
-              headers={STATE_HEADERS}
+              headers={DISTRICT_HEADERS}
               data={mappedDistrictData}
               onUpdate={(data) => setSelectedDistrict(data)}
               onDelete={(id) => handleDialog(id)}
