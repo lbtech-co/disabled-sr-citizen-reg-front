@@ -1,12 +1,16 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
-import { DistrictData, StateData } from "../interfaces/ComponentInterface";
+import {
+  DistrictData,
+  LocalLevelData,
+  StateData,
+} from "../interfaces/ComponentInterface";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
 
 interface AppContextType {
   statesData: StateData[];
   districtData: DistrictData[];
-  localLevelData: DistrictData[];
+  localLevelData: LocalLevelData[];
   fetchStatesData: () => void;
   fetchDistrictData: () => void;
   fetchLocalLevelData: () => void;
@@ -24,7 +28,7 @@ const AppContext = createContext<AppContextType>({
 const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [statesData, setStatesData] = useState<StateData[]>([]);
   const [districtData, setDistrictData] = useState<DistrictData[]>([]);
-  const [localLevelData, setLocalLevelData] = useState<DistrictData[]>([]);
+  const [localLevelData, setLocalLevelData] = useState<LocalLevelData[]>([]);
 
   useEffect(() => {
     fetchStatesData();
@@ -88,7 +92,6 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     fetchLocalLevelData,
   };
 
-  console.log(contextValue);
   return (
     <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );

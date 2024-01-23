@@ -16,8 +16,8 @@ export const MENU_ITEMS = [
 ];
 
 export const LOCAL_LEVEL_TYPES = [
-  { id: 1, title: "vdc" },
-  { id: 2, title: "municipality" },
-  { id: 3, title: "sub_metropolitan" },
-  { id: 4, title: "metropolitan" },
+  { id: "vdc", title: "VDC" },
+  { id: "municipality", title: "Municipality" },
+  { id: "sub_metropolitan", title: "Sub Metropolitan" },
+  { id: "metropolitan", title: "Metropolitan" },
 ];

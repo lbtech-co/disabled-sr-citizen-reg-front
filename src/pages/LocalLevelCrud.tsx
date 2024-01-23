@@ -10,7 +10,7 @@ import { LOCAL_LEVEL_HEADERS } from "../constants/tableHeaders";
 import LocalLevelForm from "../components/forms/LocalLevelForm";
 
 export default function LocalLevelCrud() {
-  const { statesData, localLevelData, fetchLocalLevelData } =
+  const { districtData, localLevelData, fetchLocalLevelData } =
     useContext(AppContext);
 
   const [selectedDistrict, setSelectedDistrict] = useState<DistrictData>();
@@ -20,20 +20,21 @@ export default function LocalLevelCrud() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mappedLocalLevelData = localLevelData?.map((data: any) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const matchingState: any = statesData?.find(
-      (state) => state.id === data.state_id,
+    const matchingDistrict: any = districtData?.find(
+      (state) => state.id === data.district_id,
     );
     return {
+      districtName: matchingDistrict?.english_name,
       englishName: data.english_name,
       nepaliName: data.nepali_name,
-      stateId: data.state_id,
-      stateName: matchingState?.english_name,
+      districtId: data.district_id,
+      type: data.type,
       id: data.id,
     };
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mappedStatesData = statesData?.map((data: any) => ({
+  const mappedDistrictData = districtData?.map((data: any) => ({
     englishName: data.english_name,
     nepaliName: data.nepali_name,
     id: data.id,
@@ -68,7 +69,7 @@ export default function LocalLevelCrud() {
           </div>
           <LocalLevelForm
             selectedData={selectedDistrict}
-            statesData={mappedStatesData}
+            districtsData={mappedDistrictData}
             fetchData={fetchLocalLevelData}
           />
         </div>

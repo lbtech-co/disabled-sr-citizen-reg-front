@@ -21,17 +21,17 @@ import {
   Typography,
 } from "@mui/material";
 import {
-  DistrictFormData,
-  DistrictFormProps,
+  LocalLevelFormData,
+  LocalLevelFormProps,
   StateData,
 } from "../../interfaces/ComponentInterface";
 
 export default function LocalLevelForm({
   selectedData,
   fetchData,
-  statesData,
-}: DistrictFormProps) {
-  const [stateData, setStateData] = useState<StateData[]>();
+  districtsData,
+}: LocalLevelFormProps) {
+  const [districtData, setDistrictData] = useState<StateData[]>();
   const {
     values,
     errors,
@@ -57,17 +57,18 @@ export default function LocalLevelForm({
   }, [selectedData]);
 
   useEffect(() => {
-    if (statesData) {
-      setStateData(statesData);
+    if (districtsData) {
+      setDistrictData(districtsData);
     }
-  }, [statesData]);
+  }, [districtsData]);
 
-  const handleSubmitForm = async (formValues: DistrictFormData) => {
-    const { englishName, nepaliName, stateId, id } = formValues;
+  const handleSubmitForm = async (formValues: LocalLevelFormData) => {
+    const { englishName, nepaliName, districtId, id, type } = formValues;
     const basePayload = {
       english_name: englishName,
       nepali_name: nepaliName,
-      state_id: stateId,
+      district_id: districtId,
+      type,
     };
     const payload = id ? { id, ...basePayload } : basePayload;
 
@@ -87,6 +88,8 @@ export default function LocalLevelForm({
     }
   };
 
+  // console.log(values);
+
   return (
     <Card sx={WrapperStyle}>
       <Typography
@@ -99,7 +102,7 @@ export default function LocalLevelForm({
         justifyContent="center"
         alignItems="center"
       >
-        Create/Update District
+        Create/Update Local Level
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>
@@ -108,19 +111,21 @@ export default function LocalLevelForm({
             size="small"
             variant="outlined"
             fullWidth
-            value={values.stateId}
-            onChange={(e) => setFieldValue("stateId", e.target.value)}
-            error={touched?.stateId && Boolean(errors.stateId)}
+            value={values.districtId}
+            onChange={(e) => setFieldValue("districtId", e.target.value)}
+            error={touched?.districtId && Boolean(errors.districtId)}
             onBlur={handleBlur}
           >
-            {stateData?.map((data) => (
+            {districtData?.map((data) => (
               <MenuItem
                 key={data.id}
                 value={data.id}
               >{`${data.englishName} (${data.nepaliName})`}</MenuItem>
             ))}
           </Select>
-          <FormHelperText>{touched?.stateId && errors.stateId}</FormHelperText>
+          <FormHelperText sx={{ color: "red" }}>
+            {touched?.districtId && errors.districtId}
+          </FormHelperText>
         </div>
         <CustomInput
           fullWidth
@@ -155,7 +160,7 @@ export default function LocalLevelForm({
             fullWidth
             value={values.type}
             onChange={(e) => setFieldValue("type", e.target.value)}
-            error={touched?.stateId && Boolean(errors.stateId)}
+            error={touched?.type && Boolean(errors.type)}
             onBlur={handleBlur}
           >
             {LOCAL_LEVEL_TYPES?.map((data) => (
@@ -164,7 +169,9 @@ export default function LocalLevelForm({
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText>{touched?.stateId && errors.stateId}</FormHelperText>
+          <FormHelperText sx={{ color: "red" }}>
+            {touched?.type && errors.type}
+          </FormHelperText>
         </div>
         <Button
           disabled={isSubmitting}

@@ -14,5 +14,6 @@ export const DISTRICT_SCHEMA = object({
 export const LOCAL_LEVEL_SCHEMA = object({
   englishName: string().required("Required field"),
   nepaliName: string().required("Required field"),
-  stateId: string().required("Required field"),
+  districtId: string().required("Required field"),
+  type: string().required("Required field"),
 });

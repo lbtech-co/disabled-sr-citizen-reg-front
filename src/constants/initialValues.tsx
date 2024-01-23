@@ -18,6 +18,6 @@ export const DISTRICT_INITIAL_VALUES: DistrictFormData = {
 export const LOCAL_LEVEL_INITIAL_VALUES: LocalLevelFormData = {
   nepaliName: "",
   englishName: "",
-  stateId: "",
-  type: undefined,
+  districtId: "",
+  type: "",
 };
