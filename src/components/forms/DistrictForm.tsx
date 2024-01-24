@@ -105,7 +105,6 @@ export default function DistrictForm({
         <div style={selectWrapper}>
           <InputLabel style={{ color: colors.black }}>Select State</InputLabel>
           <Select
-            label="Select state"
             size="small"
             variant="outlined"
             fullWidth
@@ -121,7 +120,9 @@ export default function DistrictForm({
               >{`${data.englishName} (${data.nepaliName})`}</MenuItem>
             ))}
           </Select>
-          <FormHelperText>{touched?.stateId && errors.stateId}</FormHelperText>
+          <FormHelperText sx={{ color: "red" }}>
+            {touched?.stateId && errors.stateId}
+          </FormHelperText>
         </div>
         <CustomInput
           fullWidth

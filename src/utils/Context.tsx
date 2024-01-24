@@ -32,7 +32,7 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statesData]);
-   
+
   const fetchData = async (
     endpoint: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

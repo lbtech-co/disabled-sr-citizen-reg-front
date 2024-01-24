@@ -1,16 +1,13 @@
 import StateForm from "../components/forms/StateForm";
 import { useContext, useState } from "react";
 import CustomTable from "../components/CustomTable";
-import { StateData, TableHeaderProps } from "../interfaces/ComponentInterface";
+import { StateData } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
 import { AppContext } from "../utils/Context";
-
-const STATE_HEADERS: TableHeaderProps[] = [
-  { id: "name", label: "Name (नाम)", align: "center" },
-];
+import { STATE_HEADERS } from "../constants/tableHeaders";
 
 export default function StatesCrud() {
   const { statesData, fetchStatesData } = useContext(AppContext);
