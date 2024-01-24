@@ -1,15 +1,12 @@
-import StateForm from "../components/StateForm";
+import StateForm from "../components/forms/StateForm";
 import { useEffect, useState } from "react";
 import CustomTable from "../components/CustomTable";
-import { StateData, TableHeaderProps } from "../interfaces/ComponentInterface";
+import { StateData } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
-
-const STATE_HEADERS: TableHeaderProps[] = [
-  { id: "name", label: "Name (नाम)", align: "center" },
-];
+import { STATE_HEADERS } from "../constants/tableHeaders";
 
 export default function StatesCrud() {
   const [selectedState, setSelectedState] = useState<StateData>();
@@ -67,7 +64,7 @@ export default function StatesCrud() {
               onDelete={(id) => handleDialog(id)}
             />
           </div>
-          <StateForm selectedState={selectedState} fetchData={fetchData} />
+          <StateForm selectedData={selectedState} fetchData={fetchData} />
         </div>
       </div>
       <CustomDialog

@@ -27,6 +27,10 @@ export interface StateData {
   id: string;
 }
 
+export interface DistrictData extends StateData {
+  stateId: string;
+}
+
 export interface CustomTableProps {
   headers: {
     label: string;
@@ -37,7 +41,8 @@ export interface CustomTableProps {
     //eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any;
   }[];
-  onUpdate?: (stateData: StateData | undefined) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onUpdate?: (data: any) => void;
   onDelete?: (id: string) => void;
 }
 
@@ -47,7 +52,16 @@ export interface StatesFormData {
   id?: string;
 }
 
+export interface DistrictFormData extends StatesFormData {
+  stateId: string;
+}
+
 export interface StateFormProps {
-  selectedState?: StateData | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  selectedData?: any;
   fetchData: () => void;
+}
+
+export interface DistrictFormProps extends StateFormProps {
+  statesData: StateData[];
 }

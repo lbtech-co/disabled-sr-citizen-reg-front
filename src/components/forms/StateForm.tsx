@@ -1,20 +1,22 @@
 import { Button, Card, Typography } from "@mui/material";
-import CustomInput from "./CustomInput";
-import { CSSProperties, useEffect } from "react";
-import { BASE_URL, colors } from "../constants/constants";
+import CustomInput from "../CustomInput";
+import { useEffect } from "react";
+import { BASE_URL, colors } from "../../constants/constants";
 import axios from "axios";
-import { STATES_INITIAL_VALUES } from "../constants/initialValues";
+import { STATES_INITIAL_VALUES } from "../../constants/initialValues";
+import { useFormik } from "formik";
+import { STATES_SCHEMA } from "../../constants/schema";
 import {
   StateFormProps,
   StatesFormData,
-} from "../interfaces/ComponentInterface";
-import { useFormik } from "formik";
-import { STATES_SCHEMA } from "../constants/schema";
+} from "../../interfaces/ComponentInterface";
+import {
+  FormButtonStyle,
+  FormStyle,
+  WrapperStyle,
+} from "../../constants/styles";
 
-export default function StateForm({
-  selectedState,
-  fetchData,
-}: StateFormProps) {
+export default function StateForm({ selectedData, fetchData }: StateFormProps) {
   const {
     values,
     errors,
@@ -32,11 +34,11 @@ export default function StateForm({
   });
 
   useEffect(() => {
-    if (selectedState) {
-      setValues(selectedState);
+    if (selectedData) {
+      setValues(selectedData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedState]);
+  }, [selectedData]);
 
   const handleSubmitForm = async (formValues: StatesFormData) => {
     const { englishName, nepaliName, id } = formValues;
@@ -101,7 +103,7 @@ export default function StateForm({
           disabled={isSubmitting}
           type="submit"
           color="primary"
-          sx={ButtonStyle}
+          sx={FormButtonStyle}
           variant="contained"
         >
           Submit
@@ -110,29 +112,3 @@ export default function StateForm({
     </Card>
   );
 }
-
-const WrapperStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  width: "40%",
-  justifyContent: "space-between",
-};
-const ButtonStyle: CSSProperties = {
-  width: "max-content",
-  height: "45px",
-  paddingInline: 10,
-  marginInline: "auto",
-};
-
-const FormStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "start",
-  justifyContent: "center",
-  width: "100%",
-  gap: "40px",
-  flex: 1,
-  padding: "20px",
-  boxSizing: "border-box",
-};

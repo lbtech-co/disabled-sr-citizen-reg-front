@@ -11,5 +11,6 @@ export const colors = {
 export const MENU_ITEMS = [
   { title: "Home", path: "/", icon: "Home" },
   { title: "States", path: "/states", icon: "States" },
+  { title: "Districts", path: "/districts", icon: "District" },
   { title: "Role", path: "/", icon: "Home" },
 ];
