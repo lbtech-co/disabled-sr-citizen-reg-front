@@ -43,11 +43,11 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
   }, [statesData]);
 
   useEffect(() => {
-    if (statesData) {
+    if (districtData) {
       fetchLocalLevelData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statesData]);
+  }, [districtData]);
 
   const fetchData = async (
     endpoint: string,
