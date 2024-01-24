@@ -1,34 +1,19 @@
 import StateForm from "../components/forms/StateForm";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import CustomTable from "../components/CustomTable";
 import { StateData } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
+import { AppContext } from "../utils/Context";
 import { STATE_HEADERS } from "../constants/tableHeaders";
 
 export default function StatesCrud() {
+  const { statesData, fetchStatesData } = useContext(AppContext);
   const [selectedState, setSelectedState] = useState<StateData>();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedId, setSelectedId] = useState("");
-  const [statesData, setStatesData] = useState<StateData[]>([]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/State/GetAllStates`);
-
-      if (response.status === 200) {
-        setStatesData(response.data?.states);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mappedData = statesData.map((data: any) => ({
@@ -45,7 +30,7 @@ export default function StatesCrud() {
   async function handleDelete() {
     try {
       await axios.delete(`${BASE_URL}/State/DeleteState?id=${selectedId}`);
-      fetchData();
+      fetchStatesData();
     } catch (err) {
       console.log(err);
     }
@@ -64,7 +49,7 @@ export default function StatesCrud() {
               onDelete={(id) => handleDialog(id)}
             />
           </div>
-          <StateForm selectedData={selectedState} fetchData={fetchData} />
+          <StateForm selectedData={selectedState} fetchData={fetchStatesData} />
         </div>
       </div>
       <CustomDialog

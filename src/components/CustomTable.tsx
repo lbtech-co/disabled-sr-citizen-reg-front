@@ -46,7 +46,7 @@ export default function CustomTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row, index) => (
+          {data?.map((row, index) => (
             <TableRow
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

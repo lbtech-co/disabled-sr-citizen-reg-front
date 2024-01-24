@@ -1,53 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import CustomTable from "../components/CustomTable";
-import { DistrictData, StateData } from "../interfaces/ComponentInterface";
+import { DistrictData } from "../interfaces/ComponentInterface";
 import CustomDialog from "../components/CustomDialog";
 import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
 import DistrictForm from "../components/forms/DistrictForm";
+import { AppContext } from "../utils/Context";
 import { DISTRICT_HEADERS } from "../constants/tableHeaders";
 
 export default function DistrictCrud() {
+  const { statesData, districtData, fetchDistrictData } =
+    useContext(AppContext);
+
   const [selectedDistrict, setSelectedDistrict] = useState<DistrictData>();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedId, setSelectedId] = useState("");
-  const [districtData, setDistrictData] = useState<DistrictData[]>([]);
-  const [statesData, setStatesData] = useState<StateData[]>([]);
-
-  useEffect(() => {
-    if (statesData) {
-      fetchData();
-    }
-  }, [statesData]);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/District/GetAllDistricts`);
-
-      if (response.status === 200) {
-        setDistrictData(response.data?.districts);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchStatesData();
-  }, []);
-
-  const fetchStatesData = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/State/GetAllStates`);
-
-      if (response.status === 200) {
-        setStatesData(response.data?.states);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mappedDistrictData = districtData?.map((data: any) => {
@@ -65,7 +33,7 @@ export default function DistrictCrud() {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mappedStatesData = statesData.map((data: any) => ({
+  const mappedStatesData = statesData?.map((data: any) => ({
     englishName: data.english_name,
     nepaliName: data.nepali_name,
     id: data.id,
@@ -81,7 +49,7 @@ export default function DistrictCrud() {
       await axios.delete(
         `${BASE_URL}/District/DeleteDistrict?id=${selectedId}`,
       );
-      fetchData();
+      fetchDistrictData();
     } catch (err) {
       console.log(err);
     }
@@ -103,7 +71,7 @@ export default function DistrictCrud() {
           <DistrictForm
             selectedData={selectedDistrict}
             statesData={mappedStatesData}
-            fetchData={fetchData}
+            fetchData={fetchDistrictData}
           />
         </div>
       </div>
