@@ -108,7 +108,9 @@ export default function LocalLevelForm({
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>
-          <InputLabel style={{ color: colors.black }}>Select State</InputLabel>
+          <InputLabel style={{ color: colors.black }}>
+            {t("Select district")}
+          </InputLabel>
           <Select
             size="small"
             variant="outlined"
@@ -154,7 +156,7 @@ export default function LocalLevelForm({
         />
         <div style={selectWrapper}>
           <InputLabel style={{ color: colors.black }}>
-            Select Local Level Type
+            {t("Select local level type")}
           </InputLabel>
           <Select
             size="small"

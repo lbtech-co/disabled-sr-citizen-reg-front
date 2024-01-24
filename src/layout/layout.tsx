@@ -48,8 +48,8 @@ export default function Layout() {
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
-            pr: "24px",
             height: "65px",
+            gap: "10px",
           }}
         >
           <IconButton color="inherit" sx={{ marginLeft: "auto" }}>

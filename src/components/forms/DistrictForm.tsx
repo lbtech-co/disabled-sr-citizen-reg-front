@@ -105,7 +105,9 @@ export default function DistrictForm({
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>
-          <InputLabel style={{ color: colors.black }}>Select State</InputLabel>
+          <InputLabel style={{ color: colors.black }}>
+            {t("Select state")}
+          </InputLabel>
           <Select
             size="small"
             variant="outlined"
