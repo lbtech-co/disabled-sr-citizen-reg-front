@@ -80,12 +80,12 @@ export default function Layout() {
             noWrap
             sx={{
               flexGrow: 1,
-              fontSize: i18n.language === "en" ? "11px" : "18px",
+              fontSize: "18px",
               fontWeight: "500",
               padding: 0,
             }}
           >
-            {t("AppTitle")}
+            अपांग र जेष्ठ नागरिक दर्ता
           </Typography>
           <IconButton onClick={toggleDrawer}>
             <Icon name={open ? "Left" : "Bars"} />

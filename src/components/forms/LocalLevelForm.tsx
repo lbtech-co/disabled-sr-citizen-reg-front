@@ -95,7 +95,7 @@ export default function LocalLevelForm({
   return (
     <Card sx={WrapperStyle}>
       <Typography
-        variant="h5"
+        fontSize="18px"
         bgcolor={colors.blue}
         color={colors.white}
         width="100%"
@@ -104,7 +104,7 @@ export default function LocalLevelForm({
         justifyContent="center"
         alignItems="center"
       >
-        Create/Update Local Level
+        {t("local level form header")}
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>

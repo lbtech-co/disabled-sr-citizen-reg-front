@@ -67,16 +67,17 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
   return (
     <Card sx={WrapperStyle}>
       <Typography
-        variant="h5"
+        // variant="h5"
         bgcolor={colors.blue}
         color={colors.white}
         width="100%"
         height="55px"
+        fontSize="18px"
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
-        Create/Update States
+        {t("state form header")}
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <CustomInput

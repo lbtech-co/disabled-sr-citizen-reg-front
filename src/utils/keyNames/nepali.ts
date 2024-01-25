@@ -1,0 +1,22 @@
+export const NEPALI_KEYS = {
+  translation: {
+    Name: "नाम",
+    Home: "गृहपृष्ठ",
+    State: "प्रदेश",
+    States: "प्रदेश हरु",
+    District: "जिल्ला",
+    Districts: "जिल्ला हरु",
+    Action: "क्रिया",
+    SN: "क्र.सं",
+    Type: "स्थानीय स्तर",
+    "Local Level": "स्थानीय स्तर",
+    "English name": "अंग्रेजी नाम",
+    "Nepali name": "नेपाली नाम",
+    "Select state": "प्रदेश छान्नुहोस्",
+    "Select district": "जिल्ला छान्नुहोस्",
+    "Select local level type": "स्थानीय स्तरको प्रकार छान्नुहोस्",
+    "state form header": "प्रदेश थप तथा सच्याउनुहोस",
+    "district form header": "जिल्ला थप तथा सच्याउनुहोस",
+    "local level form header": "स्थानीय स्तर थप तथा सच्याउनुहोस",
+  },
+};
