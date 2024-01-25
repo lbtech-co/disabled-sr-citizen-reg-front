@@ -31,6 +31,11 @@ export interface DistrictData extends StateData {
   stateId: string;
 }
 
+export interface LocalLevelData extends StateData {
+  stateId: string;
+  districtId: string;
+}
+
 export interface CustomTableProps {
   headers: {
     label: string;
@@ -56,6 +61,11 @@ export interface DistrictFormData extends StatesFormData {
   stateId: string;
 }
 
+export interface LocalLevelFormData extends StatesFormData {
+  districtId: string;
+  type: "vdc" | "municipality" | "sub_metropolitan" | "metropolitan" | "";
+}
+
 export interface StateFormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedData?: any;
@@ -64,4 +74,9 @@ export interface StateFormProps {
 
 export interface DistrictFormProps extends StateFormProps {
   statesData: StateData[];
+}
+
+export interface LocalLevelFormProps extends StateFormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  districtsData: any;
 }

@@ -1,25 +1,34 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
-import { DistrictData, StateData } from "../interfaces/ComponentInterface";
+import {
+  DistrictData,
+  LocalLevelData,
+  StateData,
+} from "../interfaces/ComponentInterface";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
 
 interface AppContextType {
   statesData: StateData[];
   districtData: DistrictData[];
+  localLevelData: LocalLevelData[];
   fetchStatesData: () => void;
   fetchDistrictData: () => void;
+  fetchLocalLevelData: () => void;
 }
 
 const AppContext = createContext<AppContextType>({
   statesData: [],
   districtData: [],
+  localLevelData: [],
   fetchStatesData: () => {},
   fetchDistrictData: () => {},
+  fetchLocalLevelData: () => {},
 });
 
 const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [statesData, setStatesData] = useState<StateData[]>([]);
   const [districtData, setDistrictData] = useState<DistrictData[]>([]);
+  const [localLevelData, setLocalLevelData] = useState<LocalLevelData[]>([]);
 
   useEffect(() => {
     fetchStatesData();
@@ -32,6 +41,13 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statesData]);
+
+  useEffect(() => {
+    if (districtData) {
+      fetchLocalLevelData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [districtData]);
 
   const fetchData = async (
     endpoint: string,
@@ -49,6 +65,12 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const fetchLocalLevelData = () => {
+    fetchData("Local/GetAllLocals", (data) => {
+      setLocalLevelData(data.locals);
+    });
+  };
+
   const fetchDistrictData = () => {
     fetchData("District/GetAllDistricts", (data) => {
       setDistrictData(data.districts);
@@ -64,8 +86,10 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const contextValue: AppContextType = {
     statesData,
     districtData,
+    localLevelData,
     fetchStatesData,
     fetchDistrictData,
+    fetchLocalLevelData,
   };
 
   return (

@@ -1,5 +1,6 @@
 import {
   DistrictFormData,
+  LocalLevelFormData,
   StatesFormData,
 } from "../interfaces/ComponentInterface";
 
@@ -12,4 +13,11 @@ export const DISTRICT_INITIAL_VALUES: DistrictFormData = {
   nepaliName: "",
   englishName: "",
   stateId: "",
+};
+
+export const LOCAL_LEVEL_INITIAL_VALUES: LocalLevelFormData = {
+  nepaliName: "",
+  englishName: "",
+  districtId: "",
+  type: "",
 };
