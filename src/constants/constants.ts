@@ -13,6 +13,7 @@ export const MENU_ITEMS = [
   { title: "States", path: "/states", icon: "States" },
   { title: "Districts", path: "/districts", icon: "District" },
   { title: "Local Level", path: "/locallevel", icon: "District" },
+  { title: "Disabled Card", path: "/disabled-card", icon: "District" },
 ];
 
 export const LOCAL_LEVEL_TYPES = [
