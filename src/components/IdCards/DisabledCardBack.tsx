@@ -44,7 +44,7 @@ function DisabledCardBack() {
           </Typography>
         </div>
         <div style={idCardStyle.fullWidthDiv}>
-          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.text}>
             Types of Disablity:
           </Typography>
           <div>
