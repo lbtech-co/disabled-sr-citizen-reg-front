@@ -107,7 +107,7 @@ function DisabledCardFront() {
           </Typography>
           <div>
             <Typography variant="body2" style={idCardStyle.text}>
-              परिचय-पत्र प्रमाणित गर्ने:
+              परिचय-पत्र प्रमाणित गर्ने
             </Typography>
             <Typography variant="body2" style={idCardStyle.text}>
               हस्ताक्षर:

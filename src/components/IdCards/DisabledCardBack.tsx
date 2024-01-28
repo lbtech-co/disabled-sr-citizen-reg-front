@@ -101,7 +101,7 @@ function DisabledCardBack() {
           </div>
           <div style={{ margin: "1rem", width: "100%" }}>
             <Typography variant="body2" style={idCardStyle.bottomRightText}>
-              Approved By:
+              Approved By
             </Typography>
             <Typography variant="body2" style={idCardStyle.bottomRightText}>
               SIgnature:
