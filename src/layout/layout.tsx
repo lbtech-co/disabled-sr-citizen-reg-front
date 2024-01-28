@@ -29,7 +29,6 @@ export default function Layout() {
     theme.breakpoints.down("sm"),
   );
   const [open, setOpen] = React.useState(!isSmallScreen);
-  const [, setKey] = React.useState(0);
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -38,9 +37,6 @@ export default function Layout() {
   const handleLanguageSwitch = () => {
     const newLanguage = i18n.language === "en" ? "ne" : "en";
     i18n.changeLanguage(newLanguage);
-
-    // Force a re-render by changing the key
-    setKey((prevKey) => prevKey + 1);
   };
 
   return (

@@ -1,0 +1,20 @@
+{
+  "state form header": "Create/Update State",
+  "district form header": "Create/Update District",
+  "local level form header": "Create/Update Local Level ",
+  "SN": "S.N",
+  "Name": "Name",
+  "Home": "Home",
+  "State": "State",
+  "States": "States",
+  "District": "District",
+  "Districts": "Districts",
+  "Action": "Action",
+  "Type": "Type",
+  "Local Level": "Local Level",
+  "English name": "English name",
+  "Nepali name": "Nepali name",
+  "Select state": "Select state",
+  "Select district": "Select district",
+  "Select local level type": "Select local level type"
+}
