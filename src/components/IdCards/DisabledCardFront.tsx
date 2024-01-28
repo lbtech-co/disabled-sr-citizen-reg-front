@@ -5,7 +5,7 @@ import { idCardStyle } from "./../../constants/styles";
 function DisabledCardFront() {
   return (
     <Card style={idCardStyle.card}>
-      <div style={{ display: "flex" }}>
+      <div style={idCardStyle.fullWidthDiv}>
         <img src={LOGO} height={70} width={80} alt="" />
         <div
           style={{
@@ -42,7 +42,7 @@ function DisabledCardFront() {
         spacing={1}
         style={{ ...idCardStyle.gridContainer, top: 100 }}
       >
-        <div style={{ width: "100%" }}>
+        <div>
           <Typography variant="body2" style={idCardStyle.text}>
             प्र. प. न.: १
           </Typography>
@@ -52,16 +52,27 @@ function DisabledCardFront() {
           <Typography variant="body2" style={idCardStyle.text}>
             नाम थर: जोन डोइ
           </Typography>
-          <Typography variant="body2" style={idCardStyle.text}>
-            ठेगाना: जिल्ला: test district, स्थानिय तह: test place, वडा नं: १
+        </div>
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            ठेगाना: जिल्ला: test district
+          </Typography>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            स्थानिय तह: test place
+          </Typography>{" "}
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            वडा नं: १
           </Typography>
         </div>
         <div style={idCardStyle.fullWidthDiv}>
-          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             जन्म मिति/उमेर: 2020-05-06/4
           </Typography>
-          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
-            ना. प्रा. न./जिल्ला: 124587/test district
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            जिल्ला: test district
+          </Typography>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            ना. प्रा. न.: 124587
           </Typography>
         </div>
         <div style={idCardStyle.fullWidthDiv}>
@@ -76,14 +87,20 @@ function DisabledCardFront() {
           </Typography>
         </div>
 
-        <div style={{ width: "100%" }}>
-          <Typography variant="body2" style={idCardStyle.text}>
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography
+            variant="body2"
+            style={{ ...idCardStyle.text, width: "67%" }}
+          >
             अपाङ्गताकाे किसिम: प्रक्रितिको आधारमा: सारिरिक अपाङ्गता
           </Typography>
-          <Typography variant="body2" style={idCardStyle.text}>
-            बाबुआमा वा संरक्षकको नाम थर: test
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            गम्भिर्ता: पुर्ण
           </Typography>
         </div>
+        <Typography variant="body2" style={idCardStyle.text}>
+          बाबुआमा वा संरक्षकको नाम थर: test
+        </Typography>
         <div style={idCardStyle.fullWidthDiv}>
           <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             परिचय-पत्र बाहक को हस्ताक्षर:

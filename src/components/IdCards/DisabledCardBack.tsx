@@ -13,23 +13,31 @@ function DisabledCardBack() {
             ID Card Type: A
           </Typography>
         </div>
-        <div style={{ width: "100%" }}>
+        <div style={idCardStyle.fullWidthDiv}>
           <Typography variant="body2" style={idCardStyle.text}>
             Name of Id Holder: test
           </Typography>
         </div>
-        <div style={{ width: "100%" }}>
-          <Typography variant="body2" style={idCardStyle.text}>
-            Address: District: test district, Local Level: test place, Ward No:
-            1
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            Address: District: test district
+          </Typography>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            Local Level: test place
+          </Typography>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            Ward No: 1
           </Typography>
         </div>
         <div style={idCardStyle.fullWidthDiv}>
-          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             Date of Birth/Age: 2024-01-07/1
           </Typography>
-          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
-            Citizenship No./District: 12345/test district
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            District: test district
+          </Typography>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
+            Citizenship No: 12345
           </Typography>
         </div>
         <div style={idCardStyle.fullWidthDiv}>
