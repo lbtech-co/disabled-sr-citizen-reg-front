@@ -77,14 +77,14 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
         justifyContent="center"
         alignItems="center"
       >
-        {t("state form header")}
+        {t("state_form_header")}
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <CustomInput
           fullWidth
           id="english-name"
           name="englishName"
-          label={t("English name")}
+          label={t("english_name")}
           value={values.englishName}
           error={touched?.englishName && Boolean(errors.englishName)}
           helperText={touched?.englishName && errors.englishName}
@@ -96,7 +96,7 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
           fullWidth
           id="nepali-name"
           name="nepaliName"
-          label={t("Nepali name")}
+          label={t("nepali_name")}
           value={values.nepaliName}
           error={touched?.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}
@@ -110,7 +110,7 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
           sx={FormButtonStyle}
           variant="contained"
         >
-          Submit
+          {t("Submit")}
         </Button>
       </form>
     </Card>

@@ -104,7 +104,7 @@ export default function LocalLevelForm({
         justifyContent="center"
         alignItems="center"
       >
-        {t("local level form header")}
+        {t("local_level_form_header")}
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>
@@ -135,7 +135,7 @@ export default function LocalLevelForm({
           fullWidth
           id="english-name"
           name="englishName"
-          label={t("English name")}
+          label={t("english_name")}
           value={values.englishName}
           error={touched?.englishName && Boolean(errors.englishName)}
           helperText={touched?.englishName && errors.englishName}
@@ -147,7 +147,7 @@ export default function LocalLevelForm({
           fullWidth
           id="nepali-name"
           name="nepaliName"
-          label={t("Nepali name")}
+          label={t("nepali_name")}
           value={values.nepaliName}
           error={touched?.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}
@@ -156,7 +156,7 @@ export default function LocalLevelForm({
         />
         <div style={selectWrapper}>
           <InputLabel style={{ color: colors.black }}>
-            {t("Select local level type")}
+            {t("select_local_level_type")}
           </InputLabel>
           <Select
             size="small"
@@ -184,7 +184,7 @@ export default function LocalLevelForm({
           sx={FormButtonStyle}
           variant="contained"
         >
-          Submit
+          {t("Submit")}
         </Button>
       </form>
     </Card>

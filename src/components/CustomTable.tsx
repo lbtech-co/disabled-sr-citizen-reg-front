@@ -29,7 +29,7 @@ export default function CustomTable({
         <TableHead>
           <TableRow>
             <TableCell sx={HeaderCellStyle} align="left">
-              {t("SN")}
+              {t("sn")}
             </TableCell>
             {headers.map((item) => (
               <TableCell
@@ -42,7 +42,7 @@ export default function CustomTable({
             ))}
             {hasActionButton && (
               <TableCell sx={HeaderCellStyle} align={defaultAlign}>
-                {t("Action")}
+                {t("action")}
               </TableCell>
             )}
           </TableRow>

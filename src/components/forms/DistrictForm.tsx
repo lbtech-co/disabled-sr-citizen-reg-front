@@ -101,12 +101,12 @@ export default function DistrictForm({
         justifyContent="center"
         alignItems="center"
       >
-        {t("district form header")}
+        {t("district_form_header")}
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>
           <InputLabel style={{ color: colors.black }}>
-            {t("Select state")}
+            {t("select_state")}
           </InputLabel>
           <Select
             size="small"
@@ -132,7 +132,7 @@ export default function DistrictForm({
           fullWidth
           id="english-name"
           name="englishName"
-          label={t("English name")}
+          label={t("english_name")}
           value={values.englishName}
           error={touched?.englishName && Boolean(errors.englishName)}
           helperText={touched?.englishName && errors.englishName}
@@ -144,7 +144,7 @@ export default function DistrictForm({
           fullWidth
           id="nepali-name"
           name="nepaliName"
-          label={t("Nepali name")}
+          label={t("nepali_name")}
           value={values.nepaliName}
           error={touched?.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}
@@ -158,7 +158,7 @@ export default function DistrictForm({
           sx={FormButtonStyle}
           variant="contained"
         >
-          Submit
+          {t("Submit")}
         </Button>
       </form>
     </Card>
