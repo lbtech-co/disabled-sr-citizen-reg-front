@@ -4,15 +4,7 @@ import { idCardStyle } from "./../../constants/styles";
 
 function DisabledCardFront() {
   return (
-    <Card
-      style={{
-        padding: "16px",
-        width: "550px",
-        height: "350px",
-        margin: "auto",
-        position: "relative",
-      }}
-    >
+    <Card style={idCardStyle.card}>
       <div style={{ display: "flex" }}>
         <img src={LOGO} height={70} width={80} alt="" />
         <div
@@ -42,25 +34,13 @@ function DisabledCardFront() {
             पुर्न अपाङ्गताकाे परिचय-पत्र
           </Typography>
         </div>
-        <div
-          style={{
-            height: "110px",
-            width: "100px",
-            border: "2px solid black",
-            justifyContent: "end",
-          }}
-        />
+        <div style={idCardStyle.photoSpace} />
       </div>
 
       <Grid
         container
         spacing={1}
-        style={{
-          position: "absolute",
-          top: 100,
-          left: 30,
-          width: "100%",
-        }}
+        style={{ ...idCardStyle.gridContainer, top: 100 }}
       >
         <div style={{ width: "100%" }}>
           <Typography variant="body2" style={idCardStyle.text}>
@@ -127,17 +107,7 @@ function DisabledCardFront() {
           </div>
         </div>
       </Grid>
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          right: 0,
-          left: 0,
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "5px",
-        }}
-      >
+      <div style={idCardStyle.disclaimer}>
         <Typography
           variant="body2"
           style={{ ...idCardStyle.text, fontSize: "11px" }}

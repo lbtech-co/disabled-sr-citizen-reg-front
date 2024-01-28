@@ -115,8 +115,8 @@ function DisabledCardBack() {
           variant="body2"
           style={{ ...idCardStyle.text, fontSize: "11px" }}
         >
-          यो परिचय-पत्र कसैले पाएमा नजिकैको प्रहरि चौकि वा स्थानिय तहमा
-          बुझाईदिनु होला
+          If found, please return to the nearest Police Station or Local
+          Authorities.
         </Typography>
       </div>
     </Card>

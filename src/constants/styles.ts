@@ -90,6 +90,13 @@ const bottomRightText: CSSProperties = {
   marginBottom: ".5rem",
 };
 
+const photoSpace: CSSProperties = {
+  height: "110px",
+  width: "100px",
+  border: "2px solid black",
+  justifyContent: "end",
+};
+
 export const idCardStyle = {
   text,
   fullWidthDiv,
@@ -100,4 +107,5 @@ export const idCardStyle = {
   card,
   gridContainer,
   bottomRightText,
+  photoSpace,
 };
