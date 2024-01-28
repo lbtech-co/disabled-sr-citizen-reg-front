@@ -19,8 +19,12 @@ import {
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
+import { i18n } from "../i18n";
+import { useTranslation } from "react-i18next";
 
 export default function Layout() {
+  const { t } = useTranslation();
+
   const isSmallScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm"),
   );
@@ -30,19 +34,29 @@ export default function Layout() {
     setOpen(!open);
   };
 
+  const handleLanguageSwitch = () => {
+    const newLanguage = i18n.language === "en" ? "ne" : "en";
+    i18n.changeLanguage(newLanguage);
+  };
+
   return (
     <div style={{ display: "flex" }}>
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
-            pr: "24px",
             height: "65px",
+            gap: "10px",
           }}
         >
           <IconButton color="inherit" sx={{ marginLeft: "auto" }}>
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon sx={{ color: "grey.50" }} />
             </Badge>
+          </IconButton>
+          <IconButton color="inherit" onClick={handleLanguageSwitch}>
+            <Typography color="textPrimary">
+              {i18n.language === "en" ? "NE" : "EN"}
+            </Typography>
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -80,7 +94,7 @@ export default function Layout() {
               <ListItemIcon>
                 <Icon name={menu.icon} />
               </ListItemIcon>
-              <ListItemText secondary={menu.title} color="grey.900" />
+              <ListItemText secondary={t(menu.title)} color="grey.900" />
             </ListItemButton>
           ))}
         </List>

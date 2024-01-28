@@ -15,8 +15,11 @@ import {
   FormStyle,
   WrapperStyle,
 } from "../../constants/styles";
+import { useTranslation } from "react-i18next";
 
 export default function StateForm({ selectedData, fetchData }: StateFormProps) {
+  const { t } = useTranslation();
+
   const {
     values,
     errors,
@@ -64,23 +67,24 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
   return (
     <Card sx={WrapperStyle}>
       <Typography
-        variant="h5"
+        // variant="h5"
         bgcolor={colors.blue}
         color={colors.white}
         width="100%"
         height="55px"
+        fontSize="18px"
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
-        Create/Update States
+        {t("state_form_header")}
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <CustomInput
           fullWidth
           id="english-name"
           name="englishName"
-          label="English name (अंग्रेजी नाम)"
+          label={t("english_name")}
           value={values.englishName}
           error={touched?.englishName && Boolean(errors.englishName)}
           helperText={touched?.englishName && errors.englishName}
@@ -92,7 +96,7 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
           fullWidth
           id="nepali-name"
           name="nepaliName"
-          label="Nepali name (नेपाली नाम)"
+          label={t("nepali_name")}
           value={values.nepaliName}
           error={touched?.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}
@@ -106,7 +110,7 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
           sx={FormButtonStyle}
           variant="contained"
         >
-          Submit
+          {t("submit")}
         </Button>
       </form>
     </Card>
