@@ -74,7 +74,6 @@ const card: CSSProperties = {
   padding: "16px",
   width: "550px",
   height: "350px",
-  margin: "auto",
   position: "relative",
 };
 
