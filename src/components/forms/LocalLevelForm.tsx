@@ -90,8 +90,6 @@ export default function LocalLevelForm({
     }
   };
 
-  // console.log(values);
-
   return (
     <Card sx={WrapperStyle}>
       <Typography
@@ -109,7 +107,7 @@ export default function LocalLevelForm({
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>
           <InputLabel style={{ color: colors.black }}>
-            {t("Select district")}
+            {t("select_district")}
           </InputLabel>
           <Select
             size="small"
