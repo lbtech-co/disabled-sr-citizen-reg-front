@@ -158,7 +158,7 @@ export default function DistrictForm({
           sx={FormButtonStyle}
           variant="contained"
         >
-          {t("Submit")}
+          {t("submit")}
         </Button>
       </form>
     </Card>

@@ -110,7 +110,7 @@ export default function StateForm({ selectedData, fetchData }: StateFormProps) {
           sx={FormButtonStyle}
           variant="contained"
         >
-          {t("Submit")}
+          {t("submit")}
         </Button>
       </form>
     </Card>
