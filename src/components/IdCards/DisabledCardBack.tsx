@@ -1,71 +1,71 @@
 import { Card, Typography, Grid } from "@mui/material";
-import { CSSProperties } from "react";
+import { idCardStyle } from "../../constants/styles";
 
 function DisabledCardBack() {
   return (
-    <Card style={cardStyle}>
-      <Grid container spacing={1} style={gridContainerStyle}>
-        <div style={fullWidthDiv}>
-          <Typography variant="body2" style={halfWidthDiv}>
+    <Card style={idCardStyle.card}>
+      <Grid container spacing={1} style={idCardStyle.gridContainer}>
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             ID Card No: 1
           </Typography>
-          <Typography variant="body2" style={halfWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             ID Card Type: A
           </Typography>
         </div>
         <div style={{ width: "100%" }}>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             Name of Id Holder: test
           </Typography>
         </div>
         <div style={{ width: "100%" }}>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             Address: District: test district, Local Level: test place, Ward No:
             1
           </Typography>
         </div>
-        <div style={fullWidthDiv}>
-          <Typography variant="body2" style={halfWidthDiv}>
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             Date of Birth/Age: 2024-01-07/1
           </Typography>
-          <Typography variant="body2" style={halfWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             Citizenship No./District: 12345/test district
           </Typography>
         </div>
-        <div style={fullWidthDiv}>
-          <Typography variant="body2" style={oneThirdWidthDiv}>
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             Issue Date: 2024-01-07
           </Typography>
-          <Typography variant="body2" style={oneThirdWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             Sex: Male
           </Typography>
-          <Typography variant="body2" style={oneThirdWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             Blood Group: A+
           </Typography>
         </div>
-        <div style={fullWidthDiv}>
-          <Typography variant="body2" style={oneThirdWidthDiv}>
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             Types of Disablity:
           </Typography>
           <div>
-            <Typography variant="body2" style={textStyle}>
+            <Typography variant="body2" style={idCardStyle.text}>
               On the basis of Nature: Physical disablity
             </Typography>
-            <Typography variant="body2" style={textStyle}>
+            <Typography variant="body2" style={idCardStyle.text}>
               On the basis of Severity: Complete
             </Typography>
           </div>
         </div>
         <div>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             {`Father's/Mother's or Guardian Name: test`}
           </Typography>
         </div>
-        <div style={fullWidthDiv}>
-          <Typography variant="body2" style={halfWidthDiv}>
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             Signature of ID Card Holder:
           </Typography>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             Approved By:
           </Typography>
         </div>
@@ -74,48 +74,47 @@ function DisabledCardBack() {
         >
           <div style={{ width: "50%", display: "flex", gap: 10 }}>
             <div>
-              <Typography variant="body2" align="center" style={textStyle}>
+              <Typography
+                variant="body2"
+                align="center"
+                style={idCardStyle.text}
+              >
                 Right
               </Typography>
-              <div style={thumbPrintStype} />
+              <div style={idCardStyle.thumbSpace} />
             </div>
             <div>
-              <Typography variant="body2" align="center" style={textStyle}>
+              <Typography
+                variant="body2"
+                align="center"
+                style={idCardStyle.text}
+              >
                 Left
               </Typography>
-              <div style={thumbPrintStype} />
+              <div style={idCardStyle.thumbSpace} />
             </div>
           </div>
           <div style={{ margin: "1.5rem 0px", width: "100%" }}>
-            <Typography
-              variant="body2"
-              style={{ ...textStyle, marginBottom: ".5rem" }}
-            >
+            <Typography variant="body2" style={idCardStyle.bottomRightText}>
               SIgnature:
             </Typography>
-            <Typography
-              variant="body2"
-              style={{ ...textStyle, marginBottom: ".5rem" }}
-            >
+            <Typography variant="body2" style={idCardStyle.bottomRightText}>
               Name:
             </Typography>
-            <Typography
-              variant="body2"
-              style={{ ...textStyle, marginBottom: ".5rem" }}
-            >
+            <Typography variant="body2" style={idCardStyle.bottomRightText}>
               Designation:
             </Typography>
-            <Typography
-              variant="body2"
-              style={{ ...textStyle, marginBottom: ".5rem" }}
-            >
+            <Typography variant="body2" style={idCardStyle.bottomRightText}>
               Date:
             </Typography>
           </div>
         </div>
       </Grid>
-      <div style={disclaimerStyle}>
-        <Typography variant="body2" style={{ ...textStyle, fontSize: "11px" }}>
+      <div style={idCardStyle.disclaimer}>
+        <Typography
+          variant="body2"
+          style={{ ...idCardStyle.text, fontSize: "11px" }}
+        >
           यो परिचय-पत्र कसैले पाएमा नजिकैको प्रहरि चौकि वा स्थानिय तहमा
           बुझाईदिनु होला
         </Typography>
@@ -125,53 +124,3 @@ function DisabledCardBack() {
 }
 
 export default DisabledCardBack;
-
-const textStyle: CSSProperties = {
-  fontSize: 12,
-  fontWeight: 600,
-  margin: "1px",
-};
-
-const fullWidthDiv: CSSProperties = {
-  display: "flex",
-  width: "100%",
-};
-
-const halfWidthDiv: CSSProperties = {
-  ...textStyle,
-  flexBasis: "50%",
-};
-
-const oneThirdWidthDiv: CSSProperties = { ...textStyle, flexBasis: "33.3%" };
-
-const disclaimerStyle: CSSProperties = {
-  position: "absolute",
-  bottom: 0,
-  right: 0,
-  left: 0,
-  display: "flex",
-  justifyContent: "center",
-  marginBottom: "5px",
-  fontSize: "11px",
-};
-
-const thumbPrintStype: CSSProperties = {
-  height: "100px",
-  width: "90px",
-  border: "2px solid black",
-};
-
-const cardStyle: CSSProperties = {
-  padding: "16px",
-  width: "550px",
-  height: "350px",
-  margin: "auto",
-  position: "relative",
-};
-
-const gridContainerStyle: CSSProperties = {
-  position: "absolute",
-  top: 30,
-  left: 30,
-  width: "100%",
-};

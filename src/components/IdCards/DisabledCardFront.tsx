@@ -1,6 +1,6 @@
 import { Card, Typography, Grid } from "@mui/material";
-import { CSSProperties } from "react";
 import LOGO from "../../assets/images/logo.png";
+import { idCardStyle } from "./../../constants/styles";
 
 function DisabledCardFront() {
   return (
@@ -63,83 +63,65 @@ function DisabledCardFront() {
         }}
       >
         <div style={{ width: "100%" }}>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             प्र. प. न.: १
           </Typography>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             प्र. प. प्रकार: क
           </Typography>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             नाम थर: जोन डोइ
           </Typography>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             ठेगाना: जिल्ला: test district, स्थानिय तह: test place, वडा नं: १
           </Typography>
         </div>
-        <div style={{ display: "flex", width: "100%" }}>
-          <Typography
-            variant="body2"
-            style={{ ...textStyle, flexBasis: "50%" }}
-          >
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             जन्म मिति/उमेर: 2020-05-06/4
           </Typography>
-          <Typography
-            variant="body2"
-            style={{ ...textStyle, flexBasis: "50%" }}
-          >
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             ना. प्रा. न./जिल्ला: 124587/test district
           </Typography>
         </div>
-        <div style={{ display: "flex", width: "100%" }}>
-          <Typography
-            variant="body2"
-            style={{ ...textStyle, flexBasis: "33.3%" }}
-          >
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             जारि मिति: 2024-05-06/4
           </Typography>
-          <Typography
-            variant="body2"
-            style={{ ...textStyle, flexBasis: "33.3%" }}
-          >
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             लिङ्ग: पुरुष
           </Typography>{" "}
-          <Typography
-            variant="body2"
-            style={{ ...textStyle, flexBasis: "33.3%" }}
-          >
+          <Typography variant="body2" style={idCardStyle.oneThirdWidthDiv}>
             रक्त समुह: A+
           </Typography>
         </div>
 
         <div style={{ width: "100%" }}>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             अपाङ्गताकाे किसिम: प्रक्रितिको आधारमा: सारिरिक अपाङ्गता
           </Typography>
-          <Typography variant="body2" style={textStyle}>
+          <Typography variant="body2" style={idCardStyle.text}>
             बाबुआमा वा संरक्षकको नाम थर: test
           </Typography>
         </div>
-        <div style={{ display: "flex", width: "100%" }}>
-          <Typography
-            variant="body2"
-            style={{ ...textStyle, flexBasis: "50%" }}
-          >
+        <div style={idCardStyle.fullWidthDiv}>
+          <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             परिचय-पत्र बाहक को हस्ताक्षर:
           </Typography>
           <div>
-            <Typography variant="body2" style={textStyle}>
+            <Typography variant="body2" style={idCardStyle.text}>
               परिचय-पत्र प्रमाणित गर्ने:
             </Typography>
-            <Typography variant="body2" style={textStyle}>
+            <Typography variant="body2" style={idCardStyle.text}>
               हस्ताक्षर:
             </Typography>
-            <Typography variant="body2" style={textStyle}>
+            <Typography variant="body2" style={idCardStyle.text}>
               नाम थर:
             </Typography>
-            <Typography variant="body2" style={textStyle}>
+            <Typography variant="body2" style={idCardStyle.text}>
               पद:
             </Typography>
-            <Typography variant="body2" style={textStyle}>
+            <Typography variant="body2" style={idCardStyle.text}>
               मिति:
             </Typography>
           </div>
@@ -156,7 +138,10 @@ function DisabledCardFront() {
           marginBottom: "5px",
         }}
       >
-        <Typography variant="body2" style={{ ...textStyle, fontSize: "11px" }}>
+        <Typography
+          variant="body2"
+          style={{ ...idCardStyle.text, fontSize: "11px" }}
+        >
           यो परिचय-पत्र कसैले पाएमा नजिकैको प्रहरि चौकि वा स्थानिय तहमा
           बुझाईदिनु होला
         </Typography>
@@ -166,9 +151,3 @@ function DisabledCardFront() {
 }
 
 export default DisabledCardFront;
-
-const textStyle: CSSProperties = {
-  fontSize: 12,
-  fontWeight: 600,
-  margin: "1px",
-};
