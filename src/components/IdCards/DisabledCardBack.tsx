@@ -65,9 +65,6 @@ function DisabledCardBack() {
           <Typography variant="body2" style={idCardStyle.halfWidthDiv}>
             Signature of ID Card Holder:
           </Typography>
-          <Typography variant="body2" style={idCardStyle.text}>
-            Approved By:
-          </Typography>
         </div>
         <div
           style={{ display: "flex", gap: 15, width: "100%", marginTop: "10px" }}
@@ -94,7 +91,10 @@ function DisabledCardBack() {
               <div style={idCardStyle.thumbSpace} />
             </div>
           </div>
-          <div style={{ margin: "1.5rem 0px", width: "100%" }}>
+          <div style={{ margin: ".5rem 1rem 0px .5rem", width: "100%" }}>
+            <Typography variant="body2" style={idCardStyle.bottomRightText}>
+              Approved By:
+            </Typography>
             <Typography variant="body2" style={idCardStyle.bottomRightText}>
               SIgnature:
             </Typography>
