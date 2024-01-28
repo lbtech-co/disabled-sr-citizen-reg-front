@@ -1,0 +1,21 @@
+{
+  "sn": "S.N",
+  "name": "Name",
+  "home": "Home",
+  "state": "State",
+  "states": "States",
+  "district": "District",
+  "districts": "Districts",
+  "action": "Action",
+  "type": "Type",
+  "local_level": "Local Level",
+  "english_name": "English name",
+  "nepali_name": "Nepali name",
+  "select_state": "Select state",
+  "select_district": "Select district",
+  "select_local_level_type": "Select local level type",
+  "state_form_header": "Create/Update State",
+  "district_form_header": "Create/Update District",
+  "local_level_form_header": "Create/Update Local Level ",
+  "submit": "Submit"
+}

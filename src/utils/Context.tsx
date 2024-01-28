@@ -1,11 +1,11 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
+import axios from "axios";
+import { BASE_URL } from "../constants/constants";
 import {
   DistrictData,
   LocalLevelData,
   StateData,
 } from "../interfaces/ComponentInterface";
-import axios from "axios";
-import { BASE_URL } from "../constants/constants";
 
 interface AppContextType {
   statesData: StateData[];

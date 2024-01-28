@@ -5,6 +5,7 @@ import axios from "axios";
 import { LOCAL_LEVEL_INITIAL_VALUES } from "../../constants/initialValues";
 import { useFormik } from "formik";
 import { LOCAL_LEVEL_SCHEMA } from "../../constants/schema";
+import { useTranslation } from "react-i18next";
 import {
   WrapperStyle,
   FormStyle,
@@ -31,6 +32,7 @@ export default function LocalLevelForm({
   fetchData,
   districtsData,
 }: LocalLevelFormProps) {
+  const { t } = useTranslation();
   const [districtData, setDistrictData] = useState<StateData[]>();
   const {
     values,
@@ -88,12 +90,10 @@ export default function LocalLevelForm({
     }
   };
 
-  // console.log(values);
-
   return (
     <Card sx={WrapperStyle}>
       <Typography
-        variant="h5"
+        fontSize="18px"
         bgcolor={colors.blue}
         color={colors.white}
         width="100%"
@@ -102,11 +102,13 @@ export default function LocalLevelForm({
         justifyContent="center"
         alignItems="center"
       >
-        Create/Update Local Level
+        {t("local_level_form_header")}
       </Typography>
       <form style={FormStyle} onSubmit={handleSubmit}>
         <div style={selectWrapper}>
-          <InputLabel style={{ color: colors.black }}>Select State</InputLabel>
+          <InputLabel style={{ color: colors.black }}>
+            {t("select_district")}
+          </InputLabel>
           <Select
             size="small"
             variant="outlined"
@@ -131,7 +133,7 @@ export default function LocalLevelForm({
           fullWidth
           id="english-name"
           name="englishName"
-          label="English name (अंग्रेजी नाम)"
+          label={t("english_name")}
           value={values.englishName}
           error={touched?.englishName && Boolean(errors.englishName)}
           helperText={touched?.englishName && errors.englishName}
@@ -143,7 +145,7 @@ export default function LocalLevelForm({
           fullWidth
           id="nepali-name"
           name="nepaliName"
-          label="Nepali name (नेपाली नाम)"
+          label={t("nepali_name")}
           value={values.nepaliName}
           error={touched?.nepaliName && Boolean(errors.nepaliName)}
           helperText={touched?.nepaliName && errors.nepaliName}
@@ -152,7 +154,7 @@ export default function LocalLevelForm({
         />
         <div style={selectWrapper}>
           <InputLabel style={{ color: colors.black }}>
-            Select Local Level Type
+            {t("select_local_level_type")}
           </InputLabel>
           <Select
             size="small"
@@ -180,7 +182,7 @@ export default function LocalLevelForm({
           sx={FormButtonStyle}
           variant="contained"
         >
-          Submit
+          {t("submit")}
         </Button>
       </form>
     </Card>
