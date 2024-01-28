@@ -9,10 +9,10 @@ export const colors = {
 };
 
 export const MENU_ITEMS = [
-  { title: "Home", path: "/", icon: "Home" },
-  { title: "States", path: "/states", icon: "States" },
-  { title: "Districts", path: "/districts", icon: "District" },
-  { title: "Local Level", path: "/locallevel", icon: "District" },
+  { title: "home", path: "/", icon: "Home" },
+  { title: "states", path: "/states", icon: "States" },
+  { title: "districts", path: "/districts", icon: "District" },
+  { title: "local_level", path: "/locallevel", icon: "District" },
   { title: "Disabled Card", path: "/disabled-card", icon: "District" },
 ];
 
