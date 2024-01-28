@@ -91,7 +91,7 @@ function DisabledCardBack() {
               <div style={idCardStyle.thumbSpace} />
             </div>
           </div>
-          <div style={{ margin: ".5rem 1rem 0px .5rem", width: "100%" }}>
+          <div style={{ margin: "1rem", width: "100%" }}>
             <Typography variant="body2" style={idCardStyle.bottomRightText}>
               Approved By:
             </Typography>

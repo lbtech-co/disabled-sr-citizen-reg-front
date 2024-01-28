@@ -38,7 +38,8 @@ export const FormStyle: CSSProperties = {
 const text: CSSProperties = {
   fontSize: 12,
   fontWeight: 600,
-  margin: "1px",
+  // margin: "2px 1px",
+  lineHeight: "20px",
 };
 
 const fullWidthDiv: CSSProperties = {
@@ -86,7 +87,7 @@ const gridContainer: CSSProperties = {
 
 const bottomRightText: CSSProperties = {
   ...text,
-  marginBottom: ".5rem",
+  marginTop: "2.5px",
 };
 
 const photoSpace: CSSProperties = {
