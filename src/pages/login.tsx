@@ -1,6 +1,10 @@
 import { colors } from "../constants/constants";
 import CustomInput from "../components/CustomInput";
 import { CSSProperties } from "react";
+import { useFormik } from "formik";
+import { LOGIN_INITIAL_VALUES } from "../constants/initialValues";
+import { LOGIN_SCHEMA } from "../constants/schema";
+import { LoginFormValues } from "../interfaces/ComponentInterface";
 import {
   Paper,
   Button,
@@ -13,6 +17,24 @@ import {
 } from "@mui/material";
 
 export default function Login() {
+  async function handleSubmitForm(values: LoginFormValues) {
+    console.log(values);
+  }
+
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+  } = useFormik({
+    initialValues: LOGIN_INITIAL_VALUES,
+    validationSchema: LOGIN_SCHEMA,
+    onSubmit: (formValues) => handleSubmitForm(formValues),
+  });
+
   return (
     <Container style={ContainerStyle}>
       <Paper elevation={10} style={paperStyle}>
@@ -24,12 +46,17 @@ export default function Login() {
             Enter your details to sign in
           </Typography>
         </Stack>
-        <form style={formStyle} noValidate>
+        <form style={formStyle} onSubmit={handleSubmit}>
           <CustomInput
             fullWidth
             label="Email or Mobile"
             id="username"
             name="userName"
+            value={values.userName}
+            error={touched?.userName && Boolean(errors.userName)}
+            helperText={touched?.userName && errors.userName}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
           <CustomInput
             fullWidth
@@ -37,6 +64,11 @@ export default function Login() {
             type="password"
             id="password"
             name="password"
+            value={values.password}
+            error={touched?.password && Boolean(errors.password)}
+            helperText={touched?.password && errors.password}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
           <Stack
             direction="row"
@@ -57,6 +89,7 @@ export default function Login() {
             color="primary"
             fullWidth
             style={submitButtonStyle}
+            disabled={isSubmitting}
           >
             Log In
           </Button>
