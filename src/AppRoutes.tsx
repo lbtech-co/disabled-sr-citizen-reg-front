@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import DistrictCrud from "./pages/DistrictCrud";
 import StatesCrud from "./pages/StatesCrud";
 import LocalLevelCrud from "./pages/LocalLevelCrud";
+import Login from "./pages/login";
 
 export function DashboardRoutes() {
   return (
@@ -11,6 +12,7 @@ export function DashboardRoutes() {
       <Route path="/states" element={<StatesCrud />} />
       <Route path="/districts" element={<DistrictCrud />} />
       <Route path="/locallevel" element={<LocalLevelCrud />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }
