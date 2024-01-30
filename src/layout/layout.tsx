@@ -10,20 +10,22 @@ import Typography from "@mui/material/Typography";
 import { Theme, styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MENU_ITEMS } from "../constants/constants";
 import { DashboardRoutes } from "../AppRoutes";
+import { i18n } from "../i18n";
+import { useTranslation } from "react-i18next";
 import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
-import { i18n } from "../i18n";
-import { useTranslation } from "react-i18next";
 
 export default function Layout() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const isSmallScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm"),
@@ -90,7 +92,17 @@ export default function Layout() {
         <Divider />
         <List>
           {MENU_ITEMS.map((menu) => (
-            <ListItemButton component={Link} to={menu.path} key={menu.title}>
+            <ListItemButton
+              component={Link}
+              to={menu.path}
+              key={menu.title}
+              sx={{
+                backgroundColor:
+                  currentPath === menu.path
+                    ? "rgba(0, 0, 0, 0.1)"
+                    : "transparent",
+              }}
+            >
               <ListItemIcon>
                 <Icon name={menu.icon} />
               </ListItemIcon>
