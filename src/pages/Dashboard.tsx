@@ -1,31 +1,14 @@
 import { Typography, Grid, Card } from "@mui/material";
 import Icon from "../components/Icon";
-
-const CARD_ITEMS = [
-  { title: "Total Disabilities", totalCount: 1075, icon: "Home", id: "1" },
-  { title: "Male Disabilities", totalCount: 57, icon: "Home", id: "2" },
-  { title: "Female Disabilities", totalCount: 32, icon: "Home", id: "3" },
-  { title: "Third Gender Disabilities", totalCount: 5, icon: "Home", id: "4" },
-  {
-    title: "Senior Citizen Disabilities",
-    totalCount: 17,
-    icon: "Home",
-    id: "5",
-  },
-  { title: "Senior Male Disabilities", totalCount: 6, icon: "Home", id: "6" },
-  { title: "Senior Female Disabilities", totalCount: 5, icon: "Home", id: "7" },
-  {
-    title: "Senior Third Gender Disabilities",
-    totalCount: 6,
-    icon: "Home",
-    id: "8",
-  },
-];
+import { DASHBOARD_CARD_ITEMS } from "../constants/constants";
+import { useTranslation } from "react-i18next";
 
 function Dashboard() {
+  const { t } = useTranslation();
+
   return (
     <Grid container spacing={2}>
-      {CARD_ITEMS.map((data) => (
+      {DASHBOARD_CARD_ITEMS.map((data) => (
         <Grid item xs={12} sm={6} md={4} lg={3} key={data.id}>
           <Card
             style={{
@@ -44,7 +27,7 @@ function Dashboard() {
               <Typography fontSize={"1.5rem"} lineHeight={1} fontWeight={600}>
                 {data.totalCount}
               </Typography>
-              <Typography fontSize={".9rem"}>{data.title}</Typography>
+              <Typography fontSize={".9rem"}>{t(data.title)}</Typography>
             </div>
             <Icon
               sx={{ fontSize: "40px", color: "white", opacity: "0.4" }}
