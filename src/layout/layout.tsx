@@ -1,7 +1,6 @@
 import React from "react";
 import Icon from "../components/Icon";
 import List from "@mui/material/List";
-import Badge from "@mui/material/Badge";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import MuiDrawer from "@mui/material/Drawer";
@@ -9,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Theme, styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link } from "react-router-dom";
 import { MENU_ITEMS } from "../constants/constants";
 import { DashboardRoutes } from "../AppRoutes";
@@ -48,12 +46,11 @@ export default function Layout() {
             gap: "10px",
           }}
         >
-          <IconButton color="inherit" sx={{ marginLeft: "auto" }}>
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon sx={{ color: "grey.50" }} />
-            </Badge>
-          </IconButton>
-          <IconButton color="inherit" onClick={handleLanguageSwitch}>
+          <IconButton
+            sx={{ marginLeft: "auto" }}
+            color="inherit"
+            onClick={handleLanguageSwitch}
+          >
             <Typography color="textPrimary">
               {i18n.language === "en" ? "NE" : "EN"}
             </Typography>
