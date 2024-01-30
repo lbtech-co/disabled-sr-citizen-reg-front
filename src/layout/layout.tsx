@@ -46,7 +46,11 @@ export default function Layout() {
             gap: "10px",
           }}
         >
-          <IconButton color="inherit" onClick={handleLanguageSwitch}>
+          <IconButton
+            sx={{ marginLeft: "auto" }}
+            color="inherit"
+            onClick={handleLanguageSwitch}
+          >
             <Typography color="textPrimary">
               {i18n.language === "en" ? "NE" : "EN"}
             </Typography>
