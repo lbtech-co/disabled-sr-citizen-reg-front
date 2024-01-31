@@ -17,5 +17,6 @@
   "state_form_header": "Create/Update State",
   "district_form_header": "Create/Update District",
   "local_level_form_header": "Create/Update Local Level ",
-  "submit": "Submit"
+  "submit": "Submit",
+  "print": "Print"
 }
