@@ -26,3 +26,19 @@
     width: 100%;
   }
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printableContent * {
+    visibility: visible;
+  }
+  #printableContent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}

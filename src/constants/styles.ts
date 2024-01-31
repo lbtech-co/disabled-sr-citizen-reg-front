@@ -33,3 +33,79 @@ export const FormStyle: CSSProperties = {
   padding: "20px",
   boxSizing: "border-box",
 };
+
+// card styles
+const text: CSSProperties = {
+  fontSize: 12,
+  fontWeight: 600,
+  // margin: "2px 1px",
+  lineHeight: "20px",
+};
+
+const fullWidthDiv: CSSProperties = {
+  display: "flex",
+  width: "100%",
+};
+
+const halfWidthDiv: CSSProperties = {
+  ...text,
+  flexBasis: "50%",
+};
+
+const oneThirdWidthDiv: CSSProperties = { ...text, flexBasis: "33.3%" };
+
+const disclaimer: CSSProperties = {
+  position: "absolute",
+  bottom: 0,
+  right: 0,
+  left: 0,
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: "5px",
+  fontSize: "11px",
+};
+
+const thumbSpace: CSSProperties = {
+  height: "100px",
+  width: "90px",
+  border: "2px solid black",
+};
+
+const card: CSSProperties = {
+  padding: "16px",
+  width: "550px",
+  height: "350px",
+  position: "relative",
+};
+
+const gridContainer: CSSProperties = {
+  position: "absolute",
+  top: 30,
+  left: 30,
+  width: "100%",
+};
+
+const bottomRightText: CSSProperties = {
+  ...text,
+  marginTop: "2.5px",
+};
+
+const photoSpace: CSSProperties = {
+  height: "110px",
+  width: "100px",
+  border: "2px solid black",
+  justifyContent: "end",
+};
+
+export const idCardStyle = {
+  text,
+  fullWidthDiv,
+  halfWidthDiv,
+  oneThirdWidthDiv,
+  disclaimer,
+  thumbSpace,
+  card,
+  gridContainer,
+  bottomRightText,
+  photoSpace,
+};
