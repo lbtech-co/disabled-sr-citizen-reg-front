@@ -17,3 +17,8 @@ export const LOCAL_LEVEL_SCHEMA = object({
   districtId: string().required("Required field"),
   type: string().required("Required field"),
 });
+
+export const LOGIN_SCHEMA = object({
+  userName: string().required("Required field"),
+  password: string().required("Required field"),
+});

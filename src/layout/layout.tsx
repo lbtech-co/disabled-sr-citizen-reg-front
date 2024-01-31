@@ -108,7 +108,9 @@ export default function Layout() {
           ))}
         </List>
       </Drawer>
-      <MainContent>{DashboardRoutes()}</MainContent>
+      <MainContent>
+        <DashboardRoutes />
+      </MainContent>
     </div>
   );
 }

@@ -80,3 +80,8 @@ export interface LocalLevelFormProps extends StateFormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   districtsData: any;
 }
+
+export interface LoginFormValues {
+  userName: string;
+  password: string;
+}

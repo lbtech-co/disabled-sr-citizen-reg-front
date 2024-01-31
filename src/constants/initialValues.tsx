@@ -1,6 +1,7 @@
 import {
   DistrictFormData,
   LocalLevelFormData,
+  LoginFormValues,
   StatesFormData,
 } from "../interfaces/ComponentInterface";
 
@@ -20,4 +21,9 @@ export const LOCAL_LEVEL_INITIAL_VALUES: LocalLevelFormData = {
   englishName: "",
   districtId: "",
   type: "",
+};
+
+export const LOGIN_INITIAL_VALUES: LoginFormValues = {
+  userName: "",
+  password: "",
 };
