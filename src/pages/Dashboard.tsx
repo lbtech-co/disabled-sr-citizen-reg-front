@@ -3,6 +3,7 @@ import Icon from "../components/Icon";
 import { DASHBOARD_CARD_ITEMS } from "../constants/constants";
 import { useTranslation } from "react-i18next";
 import { CSSProperties } from "react";
+import Chart from "./../components/chart";
 
 function Dashboard() {
   const { t } = useTranslation();
@@ -29,6 +30,9 @@ function Dashboard() {
           </Card>
         </Grid>
       ))}
+      <Grid margin={5}>
+        <Chart />
+      </Grid>
     </Grid>
   );
 }

@@ -127,7 +127,9 @@ const MainContent = styled("div")(({ theme }) => ({
   marginTop: appBarHeight,
   height: "calc(100vh - 130px)",
   width: "100%",
-  overflow: "auto",
+  maxWidth: `calc(100vw - ${drawerWidth}px)`,
+  overflowY: "auto",
+  overflowX: "hidden",
   padding: theme.spacing(4),
   [theme.breakpoints.down("sm")]: {
     padding: theme.spacing(2),
@@ -137,7 +139,6 @@ const MainContent = styled("div")(({ theme }) => ({
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
-  // zIndex: theme.zIndex.drawer + 1,
   backgroundColor: "white",
   boxShadow: "0 0.125rem 0.625rem rgba(90,97,105,.12)",
   transition: theme.transitions.create(["width", "margin"], {
