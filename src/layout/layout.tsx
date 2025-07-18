@@ -8,20 +8,22 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Theme, styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MENU_ITEMS } from "../constants/constants";
 import { DashboardRoutes } from "../AppRoutes";
+import { i18n } from "../i18n";
+import { useTranslation } from "react-i18next";
 import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
-import { i18n } from "../i18n";
-import { useTranslation } from "react-i18next";
 
 export default function Layout() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const isSmallScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm"),
@@ -87,7 +89,17 @@ export default function Layout() {
         <Divider />
         <List>
           {MENU_ITEMS.map((menu) => (
-            <ListItemButton component={Link} to={menu.path} key={menu.title}>
+            <ListItemButton
+              component={Link}
+              to={menu.path}
+              key={menu.title}
+              sx={{
+                backgroundColor:
+                  currentPath === menu.path
+                    ? "rgba(0, 0, 0, 0.1)"
+                    : "transparent",
+              }}
+            >
               <ListItemIcon>
                 <Icon name={menu.icon} />
               </ListItemIcon>
@@ -115,7 +127,9 @@ const MainContent = styled("div")(({ theme }) => ({
   marginTop: appBarHeight,
   height: "calc(100vh - 130px)",
   width: "100%",
-  overflow: "auto",
+  maxWidth: `calc(100vw - ${drawerWidth}px)`,
+  overflowY: "auto",
+  overflowX: "hidden",
   padding: theme.spacing(4),
   [theme.breakpoints.down("sm")]: {
     padding: theme.spacing(2),
@@ -125,7 +139,6 @@ const MainContent = styled("div")(({ theme }) => ({
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
-  // zIndex: theme.zIndex.drawer + 1,
   backgroundColor: "white",
   boxShadow: "0 0.125rem 0.625rem rgba(90,97,105,.12)",
   transition: theme.transitions.create(["width", "margin"], {

@@ -18,5 +18,13 @@
   "district_form_header": "Create/Update District",
   "local_level_form_header": "Create/Update Local Level ",
   "submit": "Submit",
+  "total_disabilities": "Total Disabilities",
+  "male_disabilities": "Male Disabilities",
+  "female_disabilities": "Female Disabilities",
+  "third_gender_disabilities": "Third Gender Disabilities",
+  "senior_citizen_disabilities": "Senior Citizen Disabilities",
+  "senior_male_disabilities": "Senior Male Ddisabilities",
+  "senior_female_disabilities": "Senior Female Disabilities",
+  "senior_third_gender_disabilities": "Senior Third Gender Disabilities",
   "print": "Print"
 }
